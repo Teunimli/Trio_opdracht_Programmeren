@@ -5,6 +5,7 @@ public class Serie {
     private String title;
     private int duration;
 
+
     public Serie(int id, String title, int duration) {
         this.id = id;
         this.title = title;
