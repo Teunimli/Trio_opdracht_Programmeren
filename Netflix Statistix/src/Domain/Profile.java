@@ -1,11 +1,11 @@
 package Domain;
 
-public class Profiel {
+public class Profile {
     private String name;
     private int age;
     private Account account;
 
-    public Profiel(String name, int age, Account account) {
+    public Profile(String name, int age, Account account) {
         this.name = name;
         this.age = age;
         this.account = account;

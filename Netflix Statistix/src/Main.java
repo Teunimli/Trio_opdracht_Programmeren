@@ -1,4 +1,4 @@
-import Repository.FilmRepository;
+import Repository.MovieRepository;
 import Repository.SqlHandler;
 
 public class Main {
@@ -7,7 +7,7 @@ public class Main {
 
         SqlHandler sqlHandler = new SqlHandler();
         sqlHandler.connectDatabase("jdbc:sqlserver://localhost\\SQLEXPRESS;databaseName=School;integratedSecurity=true;"); // databaseName invullen
-        FilmRepository filmRepository = new FilmRepository(sqlHandler);
+        MovieRepository movieRepository = new MovieRepository(sqlHandler);
 
     }
 }
