@@ -14,7 +14,7 @@ public class MovieRepository {
     }
 
     public ArrayList<Movie> readAll(){
-        ArrayList<Movie> list = new ArrayList<>();
+        ArrayList<Movie> list = new ArrayList<Movie>();
         try {
             ResultSet rs = sqlHandler.executeSql("SELECT * FROM Movie");
             while(rs.next()) {
