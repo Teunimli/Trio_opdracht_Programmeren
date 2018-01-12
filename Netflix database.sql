@@ -4,6 +4,8 @@ use Netflix;
 
 CREATE TABLE Account(
     AccountId int IDENTITY(1,1) PRIMARY KEY,
+	Accountname varchar(255) NOT NULL,
+	Password varchar(255) NOT NULL,
 	Firstname varchar(255) NOT NULL,
 	Tussenvoegsel varchar(50),
 	Lastname varchar(255) NOT NULL,
