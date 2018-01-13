@@ -11,7 +11,7 @@ CREATE TABLE Account(
 	Lastname varchar(255) NOT NULL,
 	Street varchar(255) NOT NULL,
 	Housenumber int NOT NULL,
-	Annax varchar(10),
+	Annex varchar(10),
 	Area varchar(255),
 	Active BIT
 )

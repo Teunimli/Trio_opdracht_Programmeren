@@ -26,6 +26,7 @@ public class UserInterface implements Runnable {
         container.setLayout(layout);
 
         tabbedPane.add("Home",createTabHome()); //Tabblad aanmaken en toevoegen
+        tabbedPane.add("Create", createCreateTab());
         tabbedPane.add("Tab2", createTab2());
 
         container.add(tabbedPane);
@@ -48,6 +49,99 @@ public class UserInterface implements Runnable {
         return panelTab1;
     }
 
+    private JPanel createCreateTab(){
+        JPanel panelCreateTab = new JPanel();
+        panelCreateTab.setBackground(Color.white);
+        panelCreateTab.setLayout(null);
+
+
+        JLabel label = new JLabel("Wat wilt u aanmaken");
+        label.setBounds(150,80,150,25);
+
+        String[] choices = {"Account", "Episode", "Movie", "Profile", "Series"}; // De opties in de dropdown
+
+        JComboBox<String> cb = new JComboBox<String>(choices);
+        cb.setBounds(300,80,300,25);
+
+        JLabel label1 = new JLabel();
+        label1.setBounds(150,150,100,25);
+        JLabel label2 = new JLabel();
+        label2.setBounds(150,180,100,25);
+        JLabel label3 = new JLabel();
+        label3.setBounds(150,210,100,25);
+        JLabel label4 = new JLabel();
+        label4.setBounds(150,240,100,25);
+        JLabel label5 = new JLabel();
+        label5.setBounds(150,270,100,25);
+        JLabel label6 = new JLabel();
+        label6.setBounds(150,300,100,25);
+        JLabel label7 = new JLabel();
+        label7.setBounds(150,330,100,25);
+        JLabel label8 = new JLabel();
+        label8.setBounds(150,360,100,25);
+
+        JTextField textField1 = new JTextField();
+        textField1.setBounds(275,150,200,25);
+        JTextField textField2 = new JTextField();
+        textField2.setBounds(275,180,200,25);
+        JTextField textField3 = new JTextField();
+        textField3.setBounds(275,210,200,25);
+        JTextField textField4 = new JTextField();
+        textField4.setBounds(275,240,200,25);
+        JTextField textField5 = new JTextField();
+        textField5.setBounds(275,270,200,25);
+        JTextField textField6 = new JTextField();
+        textField6.setBounds(275,300,200,25);
+        JTextField textField7 = new JTextField();
+        textField7.setBounds(275,330,200,25);
+        JTextField textField8 = new JTextField();
+        textField8.setBounds(275,360,200,25);
+
+        textField1.setVisible(false);
+        textField2.setVisible(false);
+        textField3.setVisible(false);
+        textField4.setVisible(false);
+        textField5.setVisible(false);
+        textField6.setVisible(false);
+        textField7.setVisible(false);
+        textField8.setVisible(false);
+
+        JButton button = new JButton("Selecteer");
+
+        ActionListener actionListener = new ActionListener(label1,label2,label3,label4,label5,label6,label7,label8,textField1,textField2,textField3,textField4,textField5,textField6,textField7,textField8, cb);
+        button.addActionListener(actionListener);
+        button.setBounds(600,80,100,25);
+
+        panelCreateTab.add(button);
+
+        panelCreateTab.add(label1);
+        panelCreateTab.add(label2);
+        panelCreateTab.add(label3);
+        panelCreateTab.add(label4);
+        panelCreateTab.add(label5);
+        panelCreateTab.add(label6);
+        panelCreateTab.add(label7);
+        panelCreateTab.add(label8);
+
+        panelCreateTab.add(textField1);
+        panelCreateTab.add(textField2);
+        panelCreateTab.add(textField3);
+        panelCreateTab.add(textField4);
+        panelCreateTab.add(textField5);
+        panelCreateTab.add(textField6);
+        panelCreateTab.add(textField7);
+        panelCreateTab.add(textField8);
+
+        JButton buttonSend = new JButton("Verstuur");
+        buttonSend.setBounds(600,360,100,25);
+
+        panelCreateTab.add(buttonSend);
+        panelCreateTab.add(label);
+        panelCreateTab.add(cb);
+
+        return panelCreateTab;
+    }
+
     private JPanel createTab2(){ // Voor een door de gebruiker geselecteerde serie, geef per aflevering het gemiddeld bekeken % van de tijdsduur. Bij elke aflevering worden het volgnummer én titel getoond.
         JPanel panelTab2 = new JPanel();
         panelTab2.setBackground(Color.white);
@@ -59,7 +153,7 @@ public class UserInterface implements Runnable {
         ArrayList<String> choices = new ArrayList<>(); // Deze zal de Series van SeriesRepository moeten ophalen
 
         choices.add("Choice 1"); //Deze zijn om te testen tot die tijd
-        choices.add("Choice 2");
+        choices.add("Choice 2"); //Deze zijn om te testen tot die tijd
 
         JComboBox<String> cb = new JComboBox<>();
 

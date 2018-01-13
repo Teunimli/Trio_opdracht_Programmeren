@@ -13,6 +13,7 @@ public class AccountRepository {
     {
         this.sqlHandler = sqlHandler;
     }
+
     public ArrayList<Account> readAll(){
         ArrayList<Account> list = new ArrayList<Account>();
         try {
