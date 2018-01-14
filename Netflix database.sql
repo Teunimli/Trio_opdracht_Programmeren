@@ -4,14 +4,14 @@ use Netflix;
 
 CREATE TABLE Account(
     AccountId int IDENTITY(1,1) PRIMARY KEY,
-	Accountname varchar(255) NOT NULL,
+	Accountname varchar(255) UNIQUE NOT NULL,
 	Password varchar(255) NOT NULL,
 	Firstname varchar(255) NOT NULL,
-	Tussenvoegsel varchar(50),
+	Insertion varchar(50),
 	Lastname varchar(255) NOT NULL,
 	Street varchar(255) NOT NULL,
 	Housenumber int NOT NULL,
-	Annex varchar(10),
+	Annax varchar(10),
 	Area varchar(255),
 	Active BIT
 )
@@ -19,7 +19,7 @@ CREATE TABLE Account(
 CREATE TABLE Profile(
 	ProfileId int IDENTITY(1,1) PRIMARY KEY,
 	AccountId int NOT NULL,
-	Profilename varchar(255) NOT NULL,
+	Profilename varchar(255) UNIQUE NOT NULL,
 	Age int NOT NULL,
 	CONSTRAINT FK_Account FOREIGN KEY (AccountId) REFERENCES Account (AccountId) ON DELETE NO ACTION ON UPDATE CASCADE
 )
