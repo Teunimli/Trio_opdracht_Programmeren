@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="src" path="/Netflixstatistix/src"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="C:/Users/Michael/Documents/GitHub/Trio_opdracht_Programmeren/Netflix  app/Netflixstatistix/rs2xml.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
