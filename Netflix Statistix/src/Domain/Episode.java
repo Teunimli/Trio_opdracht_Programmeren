@@ -5,6 +5,11 @@ public class Episode{
     private int SerieId;
     private int duration;
 
+    public Episode(String title, int duration)
+    {
+        this.title = title;
+        this.duration = duration;
+    }
 
     public String getTitle() {return title;}
 
