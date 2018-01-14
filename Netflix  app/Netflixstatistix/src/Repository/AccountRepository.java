@@ -32,7 +32,7 @@ public class AccountRepository {
         Account account = null;
         try
         {
-            String sqlQuery = "SELECT * FROM Movie WHERE Id=" + id;
+            String sqlQuery = "SELECT * FROM Account WHERE Id=" + id;
             ResultSet rs = dbConnection.sqlHandler.executeSql(sqlQuery);
             rs.next();
             account = new Account(rs.getString("Accountname"), rs.getString("Password"),rs.getString("Firstname"),rs.getString("Insertion"),  rs.getString("Lastname"),rs.getString("Street"),rs.getInt("HouseNumber"),rs.getString("Annax"), rs.getString("Area"), rs.getInt("Active"));
@@ -41,6 +41,38 @@ public class AccountRepository {
             System.out.println(e);
         }
         return account;
+    }
+
+    public int readIdWithAccountName (String name){
+        int accountId = 0;
+        try
+        {
+            String sqlQuery = "SELECT AccountId FROM Account WHERE Accountname = '" + name + "'";
+            ResultSet rs = dbConnection.sqlHandler.executeSql(sqlQuery);
+            while(rs.next()) {
+                accountId = rs.getInt("AccountId");
+            }
+        }
+        catch(Exception e) {
+            System.out.println(e);
+        }
+        return accountId;
+    }
+
+    public int countAccountsWithAccountId (int id){
+        int accountNumber = 0;
+        try
+        {
+            String sqlQuery = "SELECT COUNT(*) FROM Profile WHERE AccountId = " + id ;
+            ResultSet rs = dbConnection.sqlHandler.executeSql(sqlQuery);
+            while(rs.next()) {
+                accountNumber = rs.getInt(1);
+            }
+        }
+        catch(Exception e) {
+            System.out.println(e);
+        }
+        return accountNumber;
     }
 
     public boolean create(Account account){

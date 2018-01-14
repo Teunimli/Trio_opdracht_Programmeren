@@ -40,11 +40,11 @@ public class Inlogscherm extends JFrame {
 	private JLabel lblHuisnummer;
 	private JLabel lblStad;
 	private JLabel lblToevoeging;
-	private JComboBox comboBox_1;
+	public JComboBox comboBox_1;
 	private JTextField textField_1;
-	private JComboBox comboBox_2;
-	private JComboBox comboBox_3;
-	private JComboBox comboBox_4;
+	public JComboBox comboBox_2;
+	public JComboBox comboBox_3;
+	public JComboBox comboBox_4;
 	
 	public Inlogscherm() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -192,6 +192,8 @@ public class Inlogscherm extends JFrame {
 		tabbedPane.addTab("New tab", null, layeredPane_6, null);
 		
 		comboBox.addActionListener(new LoaditemsListener(this, comboBox));
+		AddActionListener addActionListener = new AddActionListener(textField, textField_1, textField_2, textField_3, textField_4, textField_5, textField_6, textField_7, textField_8, passwordField, comboBox, comboBox_1);
+		btnOpslaan.addActionListener(addActionListener);
 	}
 	public void ShowAccountFields()
 	{

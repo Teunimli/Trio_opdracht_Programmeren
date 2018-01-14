@@ -1,17 +1,32 @@
 package gui;
 
-import java.awt.event.ActionEvent;
+import Domain.Account;
+import Repository.AccountRepository;
+import Repository.ProfileRepository;
 
-import javax.swing.JComboBox;
+import java.awt.event.ActionEvent;
+import java.util.ArrayList;
+
+import javax.swing.*;
 
 public class LoaditemsListener implements java.awt.event.ActionListener{
 	private Inlogscherm inlog;
 	private JComboBox comboBox;
-	
+	private AccountRepository accountRepository;
+	private ProfileRepository profileRepository;
+	private ArrayList<Account> accounts;
+	private ArrayList<String> accountNames;
+	private ArrayList<String> profileNames;
+
 	public LoaditemsListener(Inlogscherm inlog, JComboBox comboBox)
 	{
 		this.inlog = inlog;
 		this.comboBox = comboBox;
+		accountRepository = new AccountRepository();
+		profileRepository = new ProfileRepository();
+		accounts = new ArrayList<Account>();
+		accountNames = new ArrayList<String>();
+		profileNames = new ArrayList<String>();
 	}
 
 	@Override
@@ -30,12 +45,33 @@ public class LoaditemsListener implements java.awt.event.ActionListener{
 			inlog.hideProgramFields(); //Combobox_2 moet geladen worden met alle profielnamen van een gekozen account
 			inlog.showProfielFields(); //Combobox_3 moet geladen worden met alle films
 								 //Combobox_4 moet geladen worden met alle series
+
+			accounts = accountRepository.readAll();
+
+			for(Account a : accounts) {
+				accountNames.add(a.getAccountName());
+			}
+			inlog.comboBox_1.setModel(new DefaultComboBoxModel(accountNames.toArray()));
 		}
 		else if (comboBox.getSelectedItem().equals("Programma"))
 		{
 			inlog.HideAccountFields();
 			inlog.hideProfielFields();
 			inlog.showProgramFields();
+
+			accounts = accountRepository.readAll();
+
+			for(Account a : accounts) {
+				accountNames.add(a.getAccountName());
+			}
+			inlog.comboBox_1.setModel(new DefaultComboBoxModel(accountNames.toArray()));
+
+			int profileAcccountNumber = accountRepository.readIdWithAccountName(inlog.comboBox_1.getSelectedItem().toString());
+			profileNames = profileRepository.read(profileAcccountNumber);
+
+			inlog.comboBox_4.setModel(new DefaultComboBoxModel(profileNames.toArray()));
+
+
 		}
 	}
 
