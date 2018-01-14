@@ -43,19 +43,7 @@ public class Inlogscherm extends JFrame {
 	private JComboBox comboBox_2;
 	private JComboBox comboBox_3;
 	private JComboBox comboBox_4;
-	
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Inlogscherm frame = new Inlogscherm();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+
 	public Inlogscherm() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 608, 429);
