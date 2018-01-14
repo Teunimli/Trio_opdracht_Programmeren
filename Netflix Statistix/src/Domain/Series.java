@@ -1,15 +1,19 @@
 package Domain;
 
+import java.util.ArrayList;
+
 public class Series {
     private int id;
     private String title;
     private int duration;
+    private ArrayList<Episode> episodes;
 
 
     public Series(int id, String title, int duration) {
         this.id = id;
         this.title = title;
         this.duration = duration;
+        this.episodes = new ArrayList<Episode>();
     }
 
     public int getId() {

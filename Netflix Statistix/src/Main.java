@@ -1,5 +1,6 @@
 import Repository.MovieRepository;
 import Repository.SqlHandler;
+import gui.EpisodeInterface;
 import gui.UserInterface;
 
 import javax.swing.*;
@@ -13,7 +14,7 @@ public class Main {
         MovieRepository movieRepository = new MovieRepository(sqlHandler);
 
 
-        UserInterface userInterface = new UserInterface();
+        EpisodeInterface userInterface = new EpisodeInterface();
         SwingUtilities.invokeLater(userInterface);
 
     }
