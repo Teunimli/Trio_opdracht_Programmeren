@@ -9,18 +9,17 @@ public class SqlHandler {
     private Connection connection = null;
 
     public boolean connectDatabase(String connectionUrl) {
-        try{
+        try {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             this.connection = DriverManager.getConnection(connectionUrl);
-        }
-        catch(Exception e)
-        {
+        } catch (Exception e) {
             System.out.println(e);
-            connection=null;
+            connection = null;
             return false;
         }
         return true;
     }
+
 
     public ResultSet executeSql(String sqlQuery) {
         ResultSet rs = null;

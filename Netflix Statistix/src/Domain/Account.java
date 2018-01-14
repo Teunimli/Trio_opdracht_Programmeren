@@ -2,6 +2,8 @@ package Domain;
 
 public class Account {
     private int id;
+    private String accountName;
+    private String passWord;
     private String firstName;
     private String lastName;
     private String street;
@@ -10,8 +12,10 @@ public class Account {
     private String area;    //Woonplaats
     private boolean active;
 
-    public Account(int id, String firstName, String lastName, String street, int houseNumber, String annex, String area, boolean active) {
+    public Account(int id, String accountName, String passWord, String firstName, String lastName, String street, int houseNumber, String annex, String area, boolean active) {
         this.id = id;
+        this.accountName = accountName;
+        this.passWord = passWord;
         this.firstName = firstName;
         this.lastName = lastName;
         this.street = street;
@@ -25,6 +29,12 @@ public class Account {
         return id;
     }
 
+    public String getAccountName() {
+        return accountName;
+    }
+    public String getPassWord() {
+        return passWord;
+    }
     public String getFirstName() {
         return firstName;
     }
