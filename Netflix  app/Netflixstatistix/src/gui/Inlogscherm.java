@@ -16,6 +16,7 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JPasswordField;
+import javax.swing.JTable;
 
 
 
@@ -45,6 +46,30 @@ public class Inlogscherm extends JFrame {
 	private JComboBox comboBox_2;
 	private JComboBox comboBox_3;
 	private JComboBox comboBox_4;
+	private JTable table;
+	private JTextField textField_9;
+	private JTextField textField_10;
+	private JTextField textField_11;
+	private JTextField textField_12;
+	private JTextField textField_13;
+	private JPasswordField passwordField_1;
+	private JTextField textField_14;
+	private JTextField textField_15;
+	private JTextField textField_16;
+	private JComboBox comboBox_6;
+	private JTextField textField_17;
+	private JComboBox comboBox_7;
+	private JComboBox comboBox_8;
+	private JComboBox comboBox_9;
+	private JLabel label;
+	private JLabel label_1;
+	private JLabel label_2;
+	private JLabel label_3;
+	private JLabel label_4;
+	private JLabel label_5;
+	private JLabel label_6;
+	private JLabel label_7;
+	private JLabel label_8;
 	
 	public Inlogscherm() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -141,7 +166,7 @@ public class Inlogscherm extends JFrame {
 		layeredPane.add(lblStad);
 		
 		JButton btnOpslaan = new JButton("Opslaan");
-		btnOpslaan.setBounds(322, 306, 116, 25);
+		btnOpslaan.setBounds(322, 295, 116, 25);
 		layeredPane.add(btnOpslaan);
 		
 		lblToevoeging = new JLabel("Toevoeging:");
@@ -176,6 +201,121 @@ public class Inlogscherm extends JFrame {
 		JLayeredPane layeredPane_1 = new JLayeredPane();
 		tabbedPane.addTab("Wijzigen", null, layeredPane_1, null);
 		
+		table = new JTable();
+		table.setBounds(0, 230, 499, 147);
+		layeredPane_1.add(table);
+		
+		JButton button = new JButton("Opslaan");
+		button.setBounds(334, 170, 116, 25);
+		layeredPane_1.add(button);
+		
+		textField_9 = new JTextField();
+		textField_9.setColumns(10);
+		textField_9.setBounds(334, 108, 116, 22);
+		layeredPane_1.add(textField_9);
+		
+		label = new JLabel("Stad:");
+		label.setBounds(285, 111, 56, 16);
+		layeredPane_1.add(label);
+		
+		label_1 = new JLabel("Toevoeging:");
+		label_1.setBounds(257, 76, 75, 16);
+		layeredPane_1.add(label_1);
+		
+		textField_10 = new JTextField();
+		textField_10.setColumns(10);
+		textField_10.setBounds(334, 73, 116, 22);
+		layeredPane_1.add(textField_10);
+		
+		textField_11 = new JTextField();
+		textField_11.setColumns(10);
+		textField_11.setBounds(334, 41, 116, 22);
+		layeredPane_1.add(textField_11);
+		
+		 label_2 = new JLabel("Huisnummer:");
+		label_2.setBounds(247, 44, 89, 16);
+		layeredPane_1.add(label_2);
+		
+		 label_3 = new JLabel("Straat:");
+		label_3.setBounds(285, 16, 56, 16);
+		layeredPane_1.add(label_3);
+		
+		textField_12 = new JTextField();
+		textField_12.setColumns(10);
+		textField_12.setBounds(334, 13, 116, 22);
+		layeredPane_1.add(textField_12);
+		
+		textField_13 = new JTextField();
+		textField_13.setColumns(10);
+		textField_13.setBounds(111, 13, 116, 22);
+		layeredPane_1.add(textField_13);
+		
+		label_4 = new JLabel("Accountnaam:");
+		label_4.setBounds(12, 16, 87, 16);
+		layeredPane_1.add(label_4);
+		
+		 label_5 = new JLabel("Password:");
+		label_5.setBounds(22, 43, 77, 19);
+		layeredPane_1.add(label_5);
+		
+		passwordField_1 = new JPasswordField();
+		passwordField_1.setBounds(111, 41, 116, 22);
+		layeredPane_1.add(passwordField_1);
+		
+		 label_6 = new JLabel("Voornaam:");
+		label_6.setBounds(32, 76, 70, 16);
+		layeredPane_1.add(label_6);
+		
+		textField_14 = new JTextField();
+		textField_14.setColumns(10);
+		textField_14.setBounds(111, 73, 116, 22);
+		layeredPane_1.add(textField_14);
+		
+		textField_15 = new JTextField();
+		textField_15.setColumns(10);
+		textField_15.setBounds(111, 108, 116, 22);
+		layeredPane_1.add(textField_15);
+		
+		 label_7 = new JLabel("Tussenvoegsel:");
+		label_7.setBounds(10, 113, 89, 16);
+		layeredPane_1.add(label_7);
+		
+		 label_8 = new JLabel("Achternaam:");
+		label_8.setBounds(22, 138, 80, 16);
+		layeredPane_1.add(label_8);
+		
+		textField_16 = new JTextField();
+		textField_16.setColumns(10);
+		textField_16.setBounds(111, 135, 116, 22);
+		layeredPane_1.add(textField_16);
+		
+		JComboBox comboBox_5 = new JComboBox();
+		comboBox_5.setModel(new DefaultComboBoxModel(new String[] {"SELECTEER", "Account", "Profiel", "Programma"}));
+		comboBox_5.setBounds(12, 185, 103, 22);
+		comboBox_5.addActionListener(new UpdateItemListener(this, comboBox_5, table));
+		layeredPane_1.add(comboBox_5);
+		
+		comboBox_6 = new JComboBox();
+		comboBox_6.setBounds(111, 13, 116, 22);
+		layeredPane_1.add(comboBox_6);
+		
+		textField_17 = new JTextField();
+		textField_17.setColumns(10);
+		textField_17.setBounds(111, 41, 116, 22);
+		layeredPane_1.add(textField_17);
+		
+		comboBox_7 = new JComboBox();
+		comboBox_7.setBounds(111, 73, 116, 22);
+		layeredPane_1.add(comboBox_7);
+		
+		comboBox_8 = new JComboBox();
+		comboBox_8.setBounds(334, 73, 116, 22);
+		layeredPane_1.add(comboBox_8);
+		
+		comboBox_9 = new JComboBox();
+		comboBox_9.setBounds(111, 41, 116, 22);
+		layeredPane_1.add(comboBox_9);
+		
 		JLayeredPane layeredPane_2 = new JLayeredPane();
 		tabbedPane.addTab("Verwijderen", null, layeredPane_2, null);
 		
@@ -193,7 +333,7 @@ public class Inlogscherm extends JFrame {
 		
 		comboBox.addActionListener(new LoaditemsListener(this, comboBox));
 	}
-	public void ShowAccountFields()
+	public void showAcItemAdd()
 	{
 		textField.setVisible(true);
 		passwordField.setVisible(true);
@@ -218,7 +358,7 @@ public class Inlogscherm extends JFrame {
 		lblToevoeging.setText("Toevoeging:");
 		lblTussenvoegsel.setText("Tussenvoegsel");
 	}
-	public void HideAccountFields()
+	public void hideAcItemAdd()
 	{
 		textField.setVisible(false);
 		passwordField.setVisible(false);
@@ -239,7 +379,7 @@ public class Inlogscherm extends JFrame {
 		lblStad.setVisible(false);
 		lblToevoeging.setVisible(false);
 	}
-	public void showProfielFields()
+	public void showPfItemAdd()
 	{
 		lblAccountnaam.setVisible(true);
 		comboBox_1.setVisible(true);
@@ -251,7 +391,7 @@ public class Inlogscherm extends JFrame {
 		lblVoornaam.setText("Leeftijd:");
 		
 	}
-	public void hideProfielFields()
+	public void hidePfItemAdd()
 	{
 		lblAccountnaam.setVisible(false);
 		comboBox_1.setVisible(false);
@@ -259,7 +399,7 @@ public class Inlogscherm extends JFrame {
 		textField_2.setVisible(false);
 
 	}
-	public void showProgramFields()
+	public void showPgItemAdd()
 	{
 		lblAccountnaam.setVisible(true);
 		comboBox_1.setVisible(true);
@@ -277,7 +417,7 @@ public class Inlogscherm extends JFrame {
 		textField_3.setVisible(true);
 		
 	}
-	public void hideProgramFields()
+	public void hidePgItemAdd()
 	{
 		lblAccountnaam.setVisible(false);
 		comboBox_1.setVisible(false);
@@ -287,4 +427,102 @@ public class Inlogscherm extends JFrame {
 		comboBox_4.setVisible(true);
 		textField_3.setVisible(false);
 	}
+	public void showAcItemUpdate()
+	{
+		label.setVisible(true);
+		label_1.setVisible(true);
+		label_2.setVisible(true);
+		label_3.setVisible(true);
+		label_4.setVisible(true);
+		label_5.setVisible(true);
+		label_6.setVisible(true);
+		label_7.setVisible(true);
+		label_8.setVisible(true);
+		passwordField_1.setVisible(true);
+		textField_9.setVisible(true);
+		textField_10.setVisible(true);
+		textField_11.setVisible(true);
+		textField_12.setVisible(true);
+		textField_13.setVisible(true);
+		textField_14.setVisible(true);
+		textField_15.setVisible(true);
+		textField_16.setVisible(true);
+		label_5.setText("Password:");
+		label_6.setText("Voornaam:");
+		label_1.setText("Toevoeging:");
+		label_7.setText("Tussenvoegsel");
+	}
+	public void hideAcItemUpdate()
+	{
+		label.setVisible(false);
+		label_1.setVisible(false);
+		label_2.setVisible(false);
+		label_3.setVisible(false);
+		label_4.setVisible(false);
+		label_5.setVisible(false);
+		label_6.setVisible(false);
+		label_7.setVisible(false);
+		label_8.setVisible(false);
+		passwordField_1.setVisible(false);
+		textField_9.setVisible(false);
+		textField_10.setVisible(false);
+		textField_11.setVisible(false);
+		textField_12.setVisible(false);
+		textField_13.setVisible(false);
+		textField_14.setVisible(false);
+		textField_15.setVisible(false);
+		textField_16.setVisible(false);
+			}
+	public void showPfItemUpdate()
+	{
+		label_4.setVisible(true);
+		label_5.setVisible(true);
+		label_6.setVisible(true);
+		textField_14.setVisible(true);
+		textField_17.setVisible(true);
+		comboBox_6.setVisible(true);
+		label_5.setText("Profielnaam:");
+		label_6.setText("Leeftijd:");
+		
+	}
+	public void hidePfItemUpdate()
+	{
+		label_4.setVisible(false);
+		label_5.setVisible(false);
+		label_6.setVisible(false);
+		textField_14.setVisible(false);
+		textField_17.setVisible(false);
+		comboBox_6.setVisible(false);
+	}
+	public void showPgItemUpdate()
+	{
+		comboBox_6.setVisible(true);
+		comboBox_7.setVisible(true);
+		comboBox_8.setVisible(true);
+		comboBox_9.setVisible(true);
+		label_5.setText("Profielnaam:");
+		label_6.setText("Film:");
+		label_1.setText("of Serie:");
+		label_5.setVisible(true);
+		label_6.setVisible(true);
+		label_1.setVisible(true);
+		label_4.setVisible(true);
+		label_7.setText("Percentage:");
+		label_7.setVisible(true);
+		textField_15.setVisible(true);
+	}
+	public void hidePgItemUpdate()
+	{		
+	comboBox_6.setVisible(false);
+	comboBox_7.setVisible(false);
+	comboBox_8.setVisible(false);
+	comboBox_9.setVisible(false);
+	label_5.setVisible(false);
+	label_6.setVisible(false);
+	label_1.setVisible(false);
+	label_7.setVisible(false);
+	label_4.setVisible(false);
+	textField_15.setVisible(false);
+	}
 }
+

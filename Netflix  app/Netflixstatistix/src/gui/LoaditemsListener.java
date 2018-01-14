@@ -19,23 +19,23 @@ public class LoaditemsListener implements java.awt.event.ActionListener{
 		
 		if(comboBox.getSelectedItem().equals("Account"))
 		{
-			inlog.hideProfielFields();
-			inlog.hideProgramFields();
-			inlog.ShowAccountFields();
+			inlog.hidePfItemAdd();
+			inlog.hidePgItemAdd();
+			inlog.showAcItemAdd();
 
 		}
 		else if (comboBox.getSelectedItem().equals("Profiel"))
 		{
-			inlog.HideAccountFields(); //Combobox_1 moet geladen worden met alle acount namen
-			inlog.hideProgramFields(); //Combobox_2 moet geladen worden met alle profielnamen van een gekozen account
-			inlog.showProfielFields(); //Combobox_3 moet geladen worden met alle films
+			inlog.hideAcItemAdd(); //Combobox_1 moet geladen worden met alle acount namen
+			inlog.hidePgItemAdd(); //Combobox_2 moet geladen worden met alle profielnamen van een gekozen account
+			inlog.showPfItemAdd(); //Combobox_3 moet geladen worden met alle films
 								 //Combobox_4 moet geladen worden met alle series
 		}
 		else if (comboBox.getSelectedItem().equals("Programma"))
 		{
-			inlog.HideAccountFields();
-			inlog.hideProfielFields();
-			inlog.showProgramFields();
+			inlog.hideAcItemAdd();
+			inlog.hidePfItemAdd();
+			inlog.showPgItemAdd();
 		}
 	}
 
