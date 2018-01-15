@@ -74,6 +74,7 @@ public class UpdateActionListener implements java.awt.event.ActionListener {
 
             }
             else if (comboBox.getSelectedItem().equals("Programma")) {
+                /*
                 int textfield_3 = Integer.parseInt(textField_3.getText());
 
                 if(comboBox_3.getSelectedItem() == null){
@@ -83,7 +84,7 @@ public class UpdateActionListener implements java.awt.event.ActionListener {
                 }else if(comboBox_3.getSelectedItem() != null && comboBox_2.getSelectedItem() != null ){
                     showMessageDialog(null, "Toevoegen kan niet");
                 }
-
+*/
             }
 
 
