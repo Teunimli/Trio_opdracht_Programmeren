@@ -336,6 +336,10 @@ public class Inlogscherm extends JFrame {
 		
 		comboBox.addActionListener(new LoaditemsListener(this, comboBox));
 		AddActionListener addActionListener = new AddActionListener(textField, textField_1, textField_2, textField_3, textField_4, textField_5, textField_6, textField_7, textField_8, passwordField, comboBox, comboBox_1);
+		
+		JComboBox comboBox_10 = new JComboBox();
+		comboBox_10.setBounds(322, 193, 116, 22);
+		layeredPane.add(comboBox_10);
 		btnOpslaan.addActionListener(addActionListener);
 	}
 	public void showAcItemAdd()
