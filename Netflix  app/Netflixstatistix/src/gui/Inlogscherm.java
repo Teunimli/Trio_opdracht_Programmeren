@@ -70,6 +70,7 @@ public class Inlogscherm extends JFrame {
 	private JLabel label_6;
 	private JLabel label_7;
 	private JLabel label_8;
+	private JTable table_1;
 
 	public Inlogscherm() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -322,6 +323,18 @@ public class Inlogscherm extends JFrame {
 		JLayeredPane layeredPane_2 = new JLayeredPane();
 		tabbedPane.addTab("Verwijderen", null, layeredPane_2, null);
 		
+		table_1 = new JTable();
+		table_1.setEnabled(true);
+		table_1.setBounds(12, 42, 475, 322);
+		
+		layeredPane_2.add(table_1);
+		
+		JComboBox comboBox_11 = new JComboBox();
+		comboBox_11.setModel(new DefaultComboBoxModel(new String[] {"SELECT", "Account", "Profiel", "Programma"}));
+		comboBox_11.setBounds(12, 13, 85, 22);
+		comboBox_11.addActionListener(new FilltableActionListener(comboBox_11,table_1));
+		layeredPane_2.add(comboBox_11);
+		
 		JLayeredPane layeredPane_3 = new JLayeredPane();
 		tabbedPane.addTab("Overzicht1", null, layeredPane_3, null);
 		
@@ -339,6 +352,17 @@ public class Inlogscherm extends JFrame {
 		
 		JComboBox comboBox_10 = new JComboBox();
 		comboBox_10.setBounds(322, 193, 116, 22);
+		comboBox_10.addActionListener(new FilltableActionListener(comboBox_10,table_1));
+		
+		JButton btnVerwijderen = new JButton("Verwijderen");
+		btnVerwijderen.setEnabled(true);
+		btnVerwijderen.setBounds(384, 12, 103, 25);
+		btnVerwijderen.addActionListener(new DeleteAction(table_1,comboBox_10));
+		layeredPane_2.add(btnVerwijderen);
+		
+		JLabel lbleerstEenItem = new JLabel("*eerst een item selecteren hieronder");
+		lbleerstEenItem.setBounds(161, 16, 222, 16);
+		layeredPane_2.add(lbleerstEenItem);
 		layeredPane.add(comboBox_10);
 		btnOpslaan.addActionListener(addActionListener);
 	}
