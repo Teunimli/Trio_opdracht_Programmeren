@@ -4,8 +4,10 @@ package gui;
 import Database.dbConnection;
 import Domain.Account;
 import Domain.Movie;
+import Domain.Series;
 import Repository.AccountRepository;
 import Repository.MovieRepository;
+import Repository.SeriesRepository;
 import net.proteanit.sql.DbUtils;
 
 import java.awt.event.ActionEvent;
@@ -92,6 +94,9 @@ public class Inlogscherm extends JFrame {
 	private JTable table_7;
 	private JComboBox comboBox_16;
 	private JComboBox comboBox_15;
+	private JComboBox comboBox_12;
+	private JComboBox comboBox_13;
+	private JComboBox comboBox_14;
 
 	public Inlogscherm() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -136,6 +141,38 @@ public class Inlogscherm extends JFrame {
 					}
 					comboBox_15.setModel(new DefaultComboBoxModel(accountnames.toArray()));
 				}
+				else if(tabbedPane.getSelectedIndex() == 3)
+				{
+					AccountRepository account = new AccountRepository();
+					ArrayList<Account> accounts = account.readAll();
+					ArrayList<String> accountnames = new ArrayList<>();
+					for(Account x : accounts)
+					{
+						accountnames.add(x.getAccountName());
+					}
+					comboBox_13.setModel(new DefaultComboBoxModel(accountnames.toArray()));
+					SeriesRepository serie = new SeriesRepository();
+					ArrayList<Series> series = serie.readAll();
+					ArrayList<String> serietitles = new ArrayList<>();
+					for(Series x : series)
+					{
+						serietitles.add(x.getTitle());
+					}
+					comboBox_14.setModel(new DefaultComboBoxModel(serietitles.toArray()));
+
+				}
+					else if(tabbedPane.getSelectedIndex() == 2)
+				{
+					SeriesRepository serie = new SeriesRepository();
+					ArrayList<Series> series = serie.readAll();
+					ArrayList<String> serietitles = new ArrayList<>();
+					for(Series x : series)
+					{
+						serietitles.add(x.getTitle());
+					}
+					comboBox_12.setModel(new DefaultComboBoxModel(serietitles.toArray()));
+
+				}
 			}
 		});
 		tabbedPane.setBounds(0, 0, 590, 382);
@@ -145,7 +182,7 @@ public class Inlogscherm extends JFrame {
 		tabbedPane.addTab("Toevoegen", null, layeredPane, null);
 		
 		JComboBox comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Account", "Profiel", "Programma"}));
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"SELECT", "Account", "Profiel", "Programma"}));
 		comboBox.setBounds(407, 13, 80, 22);
 		comboBox.setSelectedItem("Account");
 		layeredPane.add(comboBox);
@@ -400,8 +437,19 @@ public class Inlogscherm extends JFrame {
 		JLayeredPane layeredPane_3 = new JLayeredPane();
 		tabbedPane.addTab("Overzicht1", null, layeredPane_3, null);
 		
-		JComboBox comboBox_12 = new JComboBox();
+		comboBox_12 = new JComboBox();
 		comboBox_12.setBounds(12, 13, 89, 22);
+		comboBox_12.addItemListener(new ItemListener() {
+			@Override
+			public void itemStateChanged(ItemEvent e) {
+				table_2.setModel(DbUtils.resultSetToTableModel(db.sqlHandler.executeSql("SELECT Episode.EpisodeId, Episode.Title, AVG(Percentage) AS 'GemiddeldBekekenIn%'\n" +
+						"FROM Episode\n" +
+						"INNER JOIN Program ON Episode.EpisodeId = Program.EpisodeId\n" +
+						"INNER JOIN Serie ON Program.SerieId = Serie.SerieId\n" +
+						"WHERE Serie.Title ='"+comboBox_12.getSelectedItem().toString()+"'\n" +
+						"GROUP BY Episode.EpisodeId, Episode.Title")));
+			}
+		});
 		layeredPane_3.add(comboBox_12);
 		
 		table_2 = new JTable();
@@ -412,14 +460,14 @@ public class Inlogscherm extends JFrame {
 		tabbedPane.addTab("Overzicht2", null, layeredPane_4, null);
 		
 		table_3 = new JTable();
-		table_3.setBounds(12, 80, 475, 284);
+		table_3.setBounds(12, 120, 475, 244);
 		layeredPane_4.add(table_3);
 		
 		JLabel lblAccount = new JLabel("Account:");
 		lblAccount.setBounds(12, 13, 56, 16);
 		layeredPane_4.add(lblAccount);
 		
-		JComboBox comboBox_13 = new JComboBox();
+		comboBox_13 = new JComboBox();
 		comboBox_13.setBounds(70, 13, 88, 22);
 		layeredPane_4.add(comboBox_13);
 		
@@ -427,9 +475,18 @@ public class Inlogscherm extends JFrame {
 		lblSerie.setBounds(25, 55, 43, 16);
 		layeredPane_4.add(lblSerie);
 		
-		JComboBox comboBox_14 = new JComboBox();
+		comboBox_14 = new JComboBox();
 		comboBox_14.setBounds(70, 52, 88, 22);
 		layeredPane_4.add(comboBox_14);
+		
+		JLabel lblselecteerBeide = new JLabel("*Selecteer beide");
+		lblselecteerBeide.setBounds(170, 55, 107, 16);
+		layeredPane_4.add(lblselecteerBeide);
+		
+		JButton btnShow = new JButton("Show");
+		btnShow.setBounds(70, 87, 88, 25);
+		btnShow.addActionListener(new OverzichtActionListener(comboBox_13,comboBox_14,table_3));
+		layeredPane_4.add(btnShow);
 		
 		JLayeredPane layeredPane_5 = new JLayeredPane();
 		tabbedPane.addTab("Overzicht3", null, layeredPane_5, null);
