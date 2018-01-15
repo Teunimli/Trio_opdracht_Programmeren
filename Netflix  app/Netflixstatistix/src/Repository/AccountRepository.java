@@ -78,7 +78,7 @@ public class AccountRepository {
     public boolean create(Account account){
         try
         {
-            String sqlQuery = "INSERT INTO Account (Accountname, Password, Firstname, Insertion, Lastname, Street, Housenumber, Annex, Area, Active) VALUES('" + account.getAccountName()  + "', '" + account.getPassWord()  + "' ,'" + account.getFirstName() + "', '" + account.getInsertion() + "' ,'" + account.getLastName()+ "','" + account.getStreet()+"','" + account.getHouseNumber()+"','" + account.getAnnex()+"','" + account.getArea()+"'," + account.isActive()+")";
+            String sqlQuery = "INSERT INTO Account (Accountname, Password, Firstname, Insertion, Lastname, Street, Housenumber, Annax, Area, Active) VALUES('" + account.getAccountName()  + "', '" + account.getPassWord()  + "' ,'" + account.getFirstName() + "', '" + account.getInsertion() + "' ,'" + account.getLastName()+ "','" + account.getStreet()+"'," + account.getHouseNumber()+",'" + account.getAnnex()+"','" + account.getArea()+"'," + account.isActive()+")";
             return dbConnection.sqlHandler.executeSqlNoResult(sqlQuery);
         }
         catch(Exception e) {
@@ -89,8 +89,10 @@ public class AccountRepository {
     }
 
     public boolean update(Account account){
+        int accountId = readIdWithAccountName(account.getAccountName());
+
         try{
-            String sqlQuery = " UPDATE Account SET ('" + account.getFirstName() + "','" + account.getLastName()+ "','" + account.getStreet()+"','" + account.getHouseNumber()+"','" + account.getAnnex()+"','" + account.getArea()+"','" + account.isActive()+"')WHERE Id = "+1;
+            String sqlQuery = " UPDATE Account SET Accountname = '" + account.getAccountName()  + "', Password = '" + account.getPassWord()  + "', Firstname = '" + account.getFirstName() + "', Insertion = '" + account.getInsertion() + "', Lastname = '" + account.getLastName()+ "', Street = '" + account.getStreet()+"', Housenumber = " + account.getHouseNumber()+", Annax = '" + account.getAnnex()+"', Area = '"+ account.getArea()+"', Active = " + account.isActive()+" WHERE AccountId = "+ accountId ;
             return dbConnection.sqlHandler.executeSqlNoResult(sqlQuery);
         }
         catch (Exception e){
