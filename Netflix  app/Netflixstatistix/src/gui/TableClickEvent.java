@@ -55,13 +55,13 @@ public class TableClickEvent implements MouseListener {
             textField_8.setText(table.getModel().getValueAt(row,9).toString());
         }
         else if (comboBoxselect.getSelectedItem() == "Profiel"){
-//            int row = table.getSelectedRow();
-//            TableModel model = table.getModel();
-//            textField_3.setText(table.getModel().getValueAt(row,2).toString());
-//            textField.setText(table.getModel().getValueAt(row,3).toString());
+            int row = table.getSelectedRow();
+            TableModel model = table.getModel();
+            textField_3.setText(table.getModel().getValueAt(row,2).toString());
+            textField.setText(table.getModel().getValueAt(row,3).toString());
         }
         else if (comboBoxselect.getSelectedItem() == "Programma"){
-
+            
         }
     }
 
