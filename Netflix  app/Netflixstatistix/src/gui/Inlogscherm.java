@@ -1,6 +1,9 @@
 package gui;
 
 
+import Database.dbConnection;
+import net.proteanit.sql.DbUtils;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -17,11 +20,13 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JPasswordField;
 import javax.swing.JTable;
-
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 
 public class Inlogscherm extends JFrame {
 
+	private dbConnection db = new dbConnection();
 	private JPanel contentPane;
 	private JTextField textField;
 	private JTextField textField_2;
@@ -88,6 +93,14 @@ public class Inlogscherm extends JFrame {
 		contentPane.setLayout(null);
 		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.LEFT);
+		tabbedPane.addChangeListener(new ChangeListener() {
+			public void stateChanged(ChangeEvent arg0) {
+				if(tabbedPane.getSelectedIndex() == 6)
+				{
+					table_6.setModel(DbUtils.resultSetToTableModel(db.sqlHandler.executeSql("SELECT Account.Accountname FROM Account JOIN Profile On Account.AccountId = Profile.AccountId GROUP BY account.Accountname HAVING COUNT(*) = 1")));
+				}
+			}
+		});
 		tabbedPane.setBounds(0, 0, 590, 382);
 		contentPane.add(tabbedPane);
 		
@@ -425,11 +438,11 @@ public class Inlogscherm extends JFrame {
 		
 		JLayeredPane layeredPane_7 = new JLayeredPane();
 		tabbedPane.addTab("Overzicht5", null, layeredPane_7, null);
-		
+
 		table_6 = new JTable();
 		table_6.setBounds(12, 13, 475, 351);
 		layeredPane_7.add(table_6);
-		
+
 		JLayeredPane layeredPane_8 = new JLayeredPane();
 		tabbedPane.addTab("Overzicht6", null, layeredPane_8, null);
 		
@@ -444,7 +457,6 @@ public class Inlogscherm extends JFrame {
 		JLabel lblFilm = new JLabel("Film:");
 		lblFilm.setBounds(26, 16, 56, 16);
 		layeredPane_8.add(lblFilm);
-
 
 	}
 	public void showAcItemAdd()
