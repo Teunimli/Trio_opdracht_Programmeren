@@ -28,12 +28,12 @@ public class FilltableActionListener implements java.awt.event.ActionListener{
 		else if (combobox.getSelectedItem().equals("Profiel"))
 		{
 
-			table.setModel(DbUtils.resultSetToTableModel(db.sqlHandler.executeSql("SELECT * FROM Profiel")));
+			table.setModel(DbUtils.resultSetToTableModel(db.sqlHandler.executeSql("SELECT * FROM Profile")));
 								 
 		}
 		else if (combobox.getSelectedItem().equals("Programma"))
 		{
-			table.setModel(DbUtils.resultSetToTableModel(db.sqlHandler.executeSql("SELECT * FROM Programma")));
+			table.setModel(DbUtils.resultSetToTableModel(db.sqlHandler.executeSql("SELECT * FROM Program")));
 		}
 		
 	}
