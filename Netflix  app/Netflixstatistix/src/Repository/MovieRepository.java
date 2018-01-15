@@ -61,7 +61,7 @@ public class MovieRepository {
     public boolean create(Movie movie){
         try
         {
-            String sqlQuery = "INSERT INTO Movie (Title, Duration, Gerne, Language, Age) VALUES ('" + movie.getTitle() + "', " + movie.getDuration() + ", '" + movie.getGenre() + ", '" + movie.getLanguage() + ", " + movie.getAge() + ")";
+            String sqlQuery = "INSERT INTO Movie (Title, Duration, Genre, Language, Age) VALUES ('" + movie.getTitle() + "', " + movie.getDuration() + ", '" + movie.getGenre() + ", '" + movie.getLanguage() + ", " + movie.getAge() + ")";
             return dbConnection.sqlHandler.executeSqlNoResult(sqlQuery);
         }
         catch(Exception e) {
