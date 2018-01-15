@@ -58,7 +58,7 @@ public class LoaditemsListener implements java.awt.event.ActionListener{
 			inlog.hideAcItemAdd();
 			inlog.hidePfItemAdd();
 			inlog.showPgItemAdd();
-			
+
 			accounts = accountRepository.readAll();
 
 			for(Account a : accounts) {
@@ -66,11 +66,7 @@ public class LoaditemsListener implements java.awt.event.ActionListener{
 			}
 			inlog.comboBox_1.setModel(new DefaultComboBoxModel(accountNames.toArray()));
 
-			int profileAcccountNumber = accountRepository.readIdWithAccountName(inlog.comboBox_1.getSelectedItem().toString());
-			profileNames = profileRepository.read(profileAcccountNumber);
-
-			inlog.comboBox_4.setModel(new DefaultComboBoxModel(profileNames.toArray()));
-
+			inlog.comboBox_1.addActionListener(new LoadComboBoxListener(this, inlog.comboBox_1, inlog));
 
 
 		}
