@@ -87,5 +87,33 @@ public class ProfileRepository {
         }
         return profileId;
     }
+
+    public int readProfile(int id){
+        int profile = 0;
+        try
+        {
+            String sqlQuery = "SELECT ProfileId FROM Profile WHERE ProfileId=" + id;
+            ResultSet rs = dbConnection.sqlHandler.executeSql(sqlQuery);
+            while(rs.next()) {
+                profile = rs.getInt("ProfileId");
+            }
+        }
+        catch(Exception e) {
+            System.out.println(e);
+        }
+        return profile;
+    }
+
+    public boolean delete(int profileId) {
+        try
+        {
+            String sqlQuery = "DELETE FROM Profile WHERE ProfileId = " + profileId +"";
+            return dbConnection.sqlHandler.executeSqlNoResult(sqlQuery);
+        }
+        catch(Exception e) {
+            System.out.println(e);
+        }
+        return false;
+    }
 }
 

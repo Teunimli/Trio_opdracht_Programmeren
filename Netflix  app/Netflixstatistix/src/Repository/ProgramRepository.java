@@ -4,6 +4,8 @@ import Database.dbConnection;
 import Domain.Movie;
 import Domain.Program;
 
+import java.sql.ResultSet;
+
 public class ProgramRepository {
 
     ProfileRepository profileRepository = new ProfileRepository();
@@ -43,5 +45,34 @@ public class ProgramRepository {
         return false;
 
     }
+
+    public int readProgram(int id){
+        int program = 0;
+        try
+        {
+            String sqlQuery = "SELECT ProgramId FROM Program WHERE ProgramId=" + id;
+            ResultSet rs = dbConnection.sqlHandler.executeSql(sqlQuery);
+            while(rs.next()) {
+                program = rs.getInt("ProgramId");
+            }
+        }
+        catch(Exception e) {
+            System.out.println(e);
+        }
+        return program;
+    }
+
+    public boolean delete(int programId) {
+        try
+        {
+            String sqlQuery = "DELETE FROM Program WHERE ProgramId = " + programId +"";
+            return dbConnection.sqlHandler.executeSqlNoResult(sqlQuery);
+        }
+        catch(Exception e) {
+            System.out.println(e);
+        }
+        return false;
+    }
+
 
 }

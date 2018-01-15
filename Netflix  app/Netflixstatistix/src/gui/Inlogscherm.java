@@ -477,7 +477,7 @@ public class Inlogscherm extends JFrame {
 		JButton btnVerwijderen = new JButton("Verwijderen");
 		btnVerwijderen.setEnabled(true);
 		btnVerwijderen.setBounds(384, 12, 103, 25);
-		btnVerwijderen.addActionListener(new DeleteAction(table_1,comboBox_10));
+		btnVerwijderen.addActionListener(new DeleteAction(table_1,comboBox_11));
 		layeredPane_2.add(btnVerwijderen);
 		
 		JLabel lbleerstEenItem = new JLabel("*eerst een item selecteren hieronder");
