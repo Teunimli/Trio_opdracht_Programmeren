@@ -2,10 +2,17 @@ package gui;
 
 
 import Database.dbConnection;
+import Domain.Account;
+import Domain.Movie;
+import Repository.AccountRepository;
+import Repository.MovieRepository;
 import net.proteanit.sql.DbUtils;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -83,6 +90,8 @@ public class Inlogscherm extends JFrame {
 	private JTable table_5;
 	private JTable table_6;
 	private JTable table_7;
+	private JComboBox comboBox_16;
+	private JComboBox comboBox_15;
 
 	public Inlogscherm() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -98,6 +107,34 @@ public class Inlogscherm extends JFrame {
 				if(tabbedPane.getSelectedIndex() == 6)
 				{
 					table_6.setModel(DbUtils.resultSetToTableModel(db.sqlHandler.executeSql("SELECT Account.Accountname FROM Account JOIN Profile On Account.AccountId = Profile.AccountId GROUP BY account.Accountname HAVING COUNT(*) = 1")));
+				}
+				else if(tabbedPane.getSelectedIndex() == 5)
+				{
+					table_5.setModel(DbUtils.resultSetToTableModel(db.sqlHandler.executeSql("SELECT Movie.Title,Movie.Duration FROM Movie\n" +
+							"WHERE Movie.Age < 16 AND Movie.Duration = (SELECT MAX(Movie.Duration) FROM Movie)\n" +
+							"Group BY Title,Duration")));
+				}
+				else if(tabbedPane.getSelectedIndex() == 7)
+				{
+					MovieRepository movie = new MovieRepository();
+					ArrayList<Movie> movies = movie.readAll();
+					ArrayList<String> Titles = new ArrayList<>();
+					for(Movie x : movies)
+					{
+						Titles.add(x.getTitle());
+					}
+					comboBox_16.setModel(new DefaultComboBoxModel(Titles.toArray()));
+				}
+				else if(tabbedPane.getSelectedIndex() == 4)
+				{
+					AccountRepository account = new AccountRepository();
+					ArrayList<Account> accounts = account.readAll();
+					ArrayList<String> accountnames = new ArrayList<>();
+					for(Account x : accounts)
+					{
+						accountnames.add(x.getAccountName());
+					}
+					comboBox_15.setModel(new DefaultComboBoxModel(accountnames.toArray()));
 				}
 			}
 		});
@@ -397,8 +434,19 @@ public class Inlogscherm extends JFrame {
 		JLayeredPane layeredPane_5 = new JLayeredPane();
 		tabbedPane.addTab("Overzicht3", null, layeredPane_5, null);
 		
-		JComboBox comboBox_15 = new JComboBox();
+		comboBox_15 = new JComboBox();
 		comboBox_15.setBounds(63, 13, 80, 22);
+		comboBox_15.addItemListener(new ItemListener() {
+			@Override
+			public void itemStateChanged(ItemEvent e) {
+				table_4.setModel(DbUtils.resultSetToTableModel(db.sqlHandler.executeSql("SELECT Movie.Title,Movie.Duration,Movie.Age FROM Movie\n" +
+						"Join Program on Movie.MovieId = Program.MovieId\n" +
+						"Join Profile on Profile.ProfileId = Program.ProfileId\n" +
+						"Join (SELECT Account.AccountId FROM Account WHERE Account.Accountname = '"+comboBox_15.getSelectedItem().toString()+"')\n" +
+						"AS Accountname on Profile.AccountId = Accountname.AccountId\n" +
+						"Group BY Movie.Title,Movie.Duration,Movie.Age")));
+			}
+		});
 		layeredPane_5.add(comboBox_15);
 		
 		JLabel lblAccount_1 = new JLabel("Account:");
@@ -450,8 +498,20 @@ public class Inlogscherm extends JFrame {
 		table_7.setBounds(12, 69, 475, 295);
 		layeredPane_8.add(table_7);
 		
-		JComboBox comboBox_16 = new JComboBox();
+		comboBox_16 = new JComboBox();
 		comboBox_16.setBounds(62, 13, 99, 22);
+		comboBox_16.addItemListener(new ItemListener() {
+			@Override
+			public void itemStateChanged(ItemEvent e) {
+				table_7.setModel(DbUtils.resultSetToTableModel(db.sqlHandler.executeSql("SELECT Account.Accountname FROM Account\n" +
+						"Join Profile on Account.AccountId = Profile.AccountId\n" +
+						"join (SELECT Program.ProfileId,Program.MovieId FROM Program WHERE Program.Percentage = 100)\n" +
+						"as programs on Profile.ProfileId = programs.ProfileId\n" +
+						"join (SELECT Movie.MovieId FROM Movie WHERE Movie.Title = '"+comboBox_16.getSelectedItem().toString()+"')\n" +
+						"AS movie on Programs.MovieId = movie.MovieId\n" +
+						"GROUP BY Account.Accountname")));
+			}
+		});
 		layeredPane_8.add(comboBox_16);
 		
 		JLabel lblFilm = new JLabel("Film:");
