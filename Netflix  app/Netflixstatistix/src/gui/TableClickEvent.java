@@ -47,7 +47,7 @@ public class TableClickEvent implements MouseListener {
             textField.setText(table.getModel().getValueAt(row,3).toString());
             textField_1.setText(table.getModel().getValueAt(row,4).toString());
             textField_2.setText(table.getModel().getValueAt(row,5).toString());
-            textField_3.setText(table.getModel().getValueAt(row,2).toString());
+            passwordField.setText(table.getModel().getValueAt(row,2).toString());
             textField_4.setText(table.getModel().getValueAt(row,1).toString());
             textField_5.setText(table.getModel().getValueAt(row,6).toString());
             textField_6.setText(table.getModel().getValueAt(row,7).toString());
@@ -61,7 +61,7 @@ public class TableClickEvent implements MouseListener {
             textField.setText(table.getModel().getValueAt(row,3).toString());
         }
         else if (comboBoxselect.getSelectedItem() == "Programma"){
-            
+
         }
     }
 
