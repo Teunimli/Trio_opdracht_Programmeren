@@ -181,7 +181,7 @@ public class Inlogscherm extends JFrame {
 				}
 			}
 		});
-		tabbedPane.setBounds(0, 0, 590, 382);
+		tabbedPane.setBounds(0, 0, 590, 358);
 		contentPane.add(tabbedPane);
 		
 		JLayeredPane layeredPane = new JLayeredPane();
@@ -601,6 +601,14 @@ public class Inlogscherm extends JFrame {
 		
 		table_7 = new JTable();
 		scrollPane_6.setViewportView(table_7);
+		
+		JLabel lblNewLabel = new JLabel("Netflix Statistix");
+		lblNewLabel.setBounds(10, 365, 84, 16);
+		contentPane.add(lblNewLabel);
+		
+		JLabel lblInformaticaIvta = new JLabel("Informatica 2017-2018 IVT1A Teun,Kevin,Michael");
+		lblInformaticaIvta.setBounds(295, 365, 283, 16);
+		contentPane.add(lblInformaticaIvta);
 
 	}
 	public void showAcItemAdd()
