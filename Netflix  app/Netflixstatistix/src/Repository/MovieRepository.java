@@ -18,7 +18,7 @@ public class MovieRepository {
         try {
             ResultSet rs = dbConnection.sqlHandler.executeSql("SELECT * FROM Movie");
             while(rs.next()) {
-                list.add(new Movie(rs.getString("Title"), rs.getInt("Duration"), rs.getString("Gerne"), rs.getString("Language"), rs.getInt("Age")));
+                list.add(new Movie(rs.getString("Title"), rs.getInt("Duration"), rs.getString("Genre"), rs.getString("Language"), rs.getInt("Age")));
             }
         }
         catch(Exception e) {
@@ -61,7 +61,7 @@ public class MovieRepository {
     public boolean create(Movie movie){
         try
         {
-            String sqlQuery = "INSERT INTO Movie (Title, Duration, Gerne, Language, Age) VALUES ('" + movie.getTitle() + "', " + movie.getDuration() + ", '" + movie.getGenre() + ", '" + movie.getLanguage() + ", " + movie.getAge() + ")";
+            String sqlQuery = "INSERT INTO Movie (Title, Duration, Genre, Language, Age) VALUES ('" + movie.getTitle() + "', " + movie.getDuration() + ", '" + movie.getGenre() + ", '" + movie.getLanguage() + ", " + movie.getAge() + ")";
             return dbConnection.sqlHandler.executeSqlNoResult(sqlQuery);
         }
         catch(Exception e) {

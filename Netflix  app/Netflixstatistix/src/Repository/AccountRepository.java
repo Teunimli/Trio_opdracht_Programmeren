@@ -19,7 +19,7 @@ public class AccountRepository {
             String sql = "SELECT * FROM Account";
             ResultSet rs = dbConnection.sqlHandler.executeSql(sql);
             while(rs.next()) {
-                list.add(new Account(rs.getString("Accountname"), rs.getString("Password") ,rs.getString("Firstname"), rs.getString("Insertion"), rs.getString("Lastname"),rs.getString("Street"),rs.getInt("HouseNumber"),rs.getString("Annax"), rs.getString("Area"), rs.getInt("Active")));
+                list.add(new Account(rs.getString("Accountname"), rs.getString("Password") ,rs.getString("Firstname"), rs.getString("Insertion"), rs.getString("Lastname"),rs.getString("Street"),rs.getInt("HouseNumber"),rs.getString("Annex"), rs.getString("Area"), rs.getInt("Active")));
             }
         }
         catch(Exception e) {
@@ -78,7 +78,7 @@ public class AccountRepository {
     public boolean create(Account account){
         try
         {
-            String sqlQuery = "INSERT INTO Account (Accountname, Password, Firstname, Insertion, Lastname, Street, Housenumber, Annax, Area, Active) VALUES('" + account.getAccountName()  + "', '" + account.getPassWord()  + "' ,'" + account.getFirstName() + "', '" + account.getInsertion() + "' ,'" + account.getLastName()+ "','" + account.getStreet()+"','" + account.getHouseNumber()+"','" + account.getAnnex()+"','" + account.getArea()+"'," + account.isActive()+")";
+            String sqlQuery = "INSERT INTO Account (Accountname, Password, Firstname, Insertion, Lastname, Street, Housenumber, Annex, Area, Active) VALUES('" + account.getAccountName()  + "', '" + account.getPassWord()  + "' ,'" + account.getFirstName() + "', '" + account.getInsertion() + "' ,'" + account.getLastName()+ "','" + account.getStreet()+"','" + account.getHouseNumber()+"','" + account.getAnnex()+"','" + account.getArea()+"'," + account.isActive()+")";
             return dbConnection.sqlHandler.executeSqlNoResult(sqlQuery);
         }
         catch(Exception e) {
