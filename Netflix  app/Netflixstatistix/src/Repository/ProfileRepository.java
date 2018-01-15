@@ -7,6 +7,8 @@ import Domain.Profile;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
+import static javax.swing.JOptionPane.showMessageDialog;
+
 public class ProfileRepository {
         private AccountRepository accountRepository= new AccountRepository();
 
@@ -18,9 +20,11 @@ public class ProfileRepository {
                     try
                     {
                         String sqlQuery = "INSERT INTO Profile (AccountId, Profilename, Age) VALUES('" + accountId  + "', '" + profile.getName()  + "' ,'" + profile.getAge() +"' )";
+                        showMessageDialog(null, "Toevoegen van een profiel is gelukt");
                         return dbConnection.sqlHandler.executeSqlNoResult(sqlQuery);
                     }
                     catch(Exception e) {
+                        showMessageDialog(null, "Toevoegen van ene progiel niet gelukt");
                         System.out.println(e);
                     }
                 }
@@ -64,9 +68,11 @@ public class ProfileRepository {
 
         try{
             String sqlQuery = " UPDATE Profile SET Profilename = '" + profile.getAccountName() + "', Age = " + profile.getAge() +" WHERE ProfileId = "+ profileId ;
+            showMessageDialog(null, "Updaten van progiel gelukt");
             return dbConnection.sqlHandler.executeSqlNoResult(sqlQuery);
         }
         catch (Exception e){
+            showMessageDialog(null, "Updaten van profiel niet gelukt");
             System.out.println(e);
         }
         return false;
@@ -108,9 +114,11 @@ public class ProfileRepository {
         try
         {
             String sqlQuery = "DELETE FROM Profile WHERE ProfileId = " + profileId +"";
+            showMessageDialog(null, "Deleten van een profiel gelukt");
             return dbConnection.sqlHandler.executeSqlNoResult(sqlQuery);
         }
         catch(Exception e) {
+            showMessageDialog(null, "Deleten van progiel niet gelukt");
             System.out.println(e);
         }
         return false;

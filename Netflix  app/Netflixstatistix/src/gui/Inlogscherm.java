@@ -527,9 +527,9 @@ public class Inlogscherm extends JFrame {
 		AddActionListener addActionListener = new AddActionListener(textField, textField_1, textField_2, textField_3, textField_4, textField_5, textField_6, textField_7, textField_8, passwordField, comboBox, comboBox_1, comboBox_2, comboBox_3, comboBox_4, comboBox_10);
 		btnOpslaan.addActionListener(addActionListener);
 		
-		JComboBox comboBox_10 = new JComboBox();
-		comboBox_10.setBounds(322, 193, 116, 22);
-		comboBox_10.addActionListener(new FilltableActionListener(comboBox_10,table_1));
+		JComboBox comboBox_22 = new JComboBox();
+		comboBox_22.setBounds(322, 193, 116, 22);
+		comboBox_22.addActionListener(new FilltableActionListener(comboBox_22,table_1));
 		
 		JButton btnVerwijderen = new JButton("Verwijderen");
 		btnVerwijderen.setEnabled(true);
@@ -540,7 +540,7 @@ public class Inlogscherm extends JFrame {
 		JLabel lbleerstEenItem = new JLabel("*eerst een item selecteren hieronder");
 		lbleerstEenItem.setBounds(161, 16, 222, 16);
 		layeredPane_2.add(lbleerstEenItem);
-		layeredPane.add(comboBox_10);
+		layeredPane.add(comboBox_22);
 		
 		JLayeredPane layeredPane_7 = new JLayeredPane();
 		tabbedPane.addTab("Overzicht5", null, layeredPane_7, null);
@@ -641,6 +641,7 @@ public class Inlogscherm extends JFrame {
 		comboBox_1.setVisible(false);
 		textField_1.setVisible(false);
 		textField_2.setVisible(false);
+
 	}
 	public void showPgItemAdd()
 	{
@@ -669,6 +670,7 @@ public class Inlogscherm extends JFrame {
 		comboBox_3.setVisible(false);
 		comboBox_4.setVisible(true);
 		textField_3.setVisible(false);
+		comboBox_10.setVisible(false);
 	}
 	public void showAcItemUpdate()
 	{

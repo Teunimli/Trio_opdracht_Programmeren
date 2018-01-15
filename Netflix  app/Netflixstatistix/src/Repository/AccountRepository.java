@@ -6,6 +6,8 @@ import Domain.Account;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
+import static javax.swing.JOptionPane.showMessageDialog;
+
 public class AccountRepository {
 
     public AccountRepository()
@@ -79,9 +81,11 @@ public class AccountRepository {
         try
         {
             String sqlQuery = "INSERT INTO Account (Accountname, Password, Firstname, Insertion, Lastname, Street, Housenumber, Annex, Area, Active) VALUES('" + account.getAccountName()  + "', '" + account.getPassWord()  + "' ,'" + account.getFirstName() + "', '" + account.getInsertion() + "' ,'" + account.getLastName()+ "','" + account.getStreet()+"'," + account.getHouseNumber()+",'" + account.getAnnex()+"','" + account.getArea()+"'," + account.isActive()+")";
+            showMessageDialog(null, "Toevoegen van een Account is gelukt");
             return dbConnection.sqlHandler.executeSqlNoResult(sqlQuery);
         }
         catch(Exception e) {
+            showMessageDialog(null, "Toevoegen niet gelukt");
             System.out.println(e);
         }
         return false;
@@ -93,10 +97,12 @@ public class AccountRepository {
 
         try{
             String sqlQuery = " UPDATE Account SET Accountname = '" + account.getAccountName()  + "', Password = '" + account.getPassWord()  + "', Firstname = '" + account.getFirstName() + "', Insertion = '" + account.getInsertion() + "', Lastname = '" + account.getLastName()+ "', Street = '" + account.getStreet()+"', Housenumber = " + account.getHouseNumber()+", Annex = '" + account.getAnnex()+"', Area = '"+ account.getArea()+"', Active = " + account.isActive()+" WHERE AccountId = "+ accountId ;
+            showMessageDialog(null, "Updaten van een account gelukt");
             return dbConnection.sqlHandler.executeSqlNoResult(sqlQuery);
         }
         catch (Exception e){
             System.out.println(e);
+            showMessageDialog(null, "Updaten niet gelukt");
         }
         return false;
     }
@@ -105,9 +111,11 @@ public class AccountRepository {
         try
         {
             String sqlQuery = "DELETE FROM Account WHERE Accountname = '" + account.getAccountName() +"'";
+            showMessageDialog(null, "Deleten van account gelukt");
             return dbConnection.sqlHandler.executeSqlNoResult(sqlQuery);
         }
         catch(Exception e) {
+            showMessageDialog(null, "Deleten niet gelukt");
             System.out.println(e);
         }
         return false;
