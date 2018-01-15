@@ -43,6 +43,35 @@ public class ProfileRepository {
         return profileNames;
     }
 
+    public int readIdWithProfileName (String name){
+        int profileId = 0;
+        try
+        {
+            String sqlQuery = "SELECT ProfileId FROM Profile WHERE Profilename = '" + name + "'";
+            ResultSet rs = dbConnection.sqlHandler.executeSql(sqlQuery);
+            while(rs.next()) {
+                profileId = rs.getInt("ProfileId");
+            }
+        }
+        catch(Exception e) {
+            System.out.println(e);
+        }
+        return profileId;
+    }
+
+    public boolean update(Profile profile){
+        int profileId = readIdWithProfileName(profile.getAccountName());
+
+        try{
+            String sqlQuery = " UPDATE Profile SET Profilename = '" + profile.getAccountName() + "', Age = " + profile.getAge() +" WHERE Profilename = "+ profileId ;
+            return dbConnection.sqlHandler.executeSqlNoResult(sqlQuery);
+        }
+        catch (Exception e){
+            System.out.println(e);
+        }
+        return false;
+    }
+
     public int readIdWithProfiletName (String name){
         int profileId = 0;
         try

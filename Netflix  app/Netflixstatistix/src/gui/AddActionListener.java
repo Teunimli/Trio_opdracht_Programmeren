@@ -58,6 +58,8 @@ public class AddActionListener implements java.awt.event.ActionListener {
         programRepository = new ProgramRepository();
     }
 
+
+
     @Override
     public void actionPerformed(ActionEvent e) {
         if(comboBox.getSelectedItem().equals("Account")) {
@@ -66,6 +68,8 @@ public class AddActionListener implements java.awt.event.ActionListener {
             String passText = new String(passwordField.getPassword());
             accountRepository.create(new Account(textField.getText(), passText,  textField_2.getText(),  textField_3.getText(),  textField_4.getText(),  textField_5.getText(),  textfield_6,  textField_7.getText(), textField_8.getText(), 1));
         }
+
+
         else if (comboBox.getSelectedItem().equals("Profiel")) {
             int textfield_2 = Integer.parseInt(textField_2.getText());
 
@@ -84,6 +88,9 @@ public class AddActionListener implements java.awt.event.ActionListener {
             }
 
         }
+
+
+
 
     }
 }

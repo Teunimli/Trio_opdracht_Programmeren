@@ -57,7 +57,7 @@ public class Inlogscherm extends JFrame {
 	private JTextField textField_14;
 	private JTextField textField_15;
 	private JTextField textField_16;
-	private JComboBox comboBox_6;
+	public JComboBox comboBox_6;
 	private JTextField textField_17;
 	private JComboBox comboBox_7;
 	private JComboBox comboBox_8;
@@ -78,6 +78,7 @@ public class Inlogscherm extends JFrame {
 	private JTable table_5;
 	private JTable table_6;
 	private JTable table_7;
+	private JButton button;
 
 	public Inlogscherm() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -213,8 +214,8 @@ public class Inlogscherm extends JFrame {
 		table.setBounds(0, 230, 499, 147);
 
 		layeredPane_1.add(table);
-		
-		JButton button = new JButton("Opslaan");
+
+		button = new JButton("Opslaan");
 		button.setBounds(334, 158, 116, 25);
 		layeredPane_1.add(button);
 		
@@ -330,7 +331,7 @@ public class Inlogscherm extends JFrame {
 		comboBox_10.setBounds(322, 193, 116, 22);
 		layeredPane.add(comboBox_10);
 
-		table.addMouseListener(new TableClickEvent(table,comboBox_5,textField_9,textField_10,textField_11,textField_12,textField_13,textField_14,textField_15,textField_16,textField_17,passwordField_1,comboBox_6,comboBox_7,comboBox_8,comboBox_9));
+		table.addMouseListener(new TableClickEvent(this,table,comboBox_5,textField_9,textField_10,textField_11,textField_12,textField_13,textField_14,textField_15,textField_16,textField_17,passwordField_1,comboBox_6,comboBox_7,comboBox_8,comboBox_9, button));
 
 		JLayeredPane layeredPane_2 = new JLayeredPane();
 		tabbedPane.addTab("Verwijderen", null, layeredPane_2, null);
