@@ -63,7 +63,7 @@ public class ProfileRepository {
         int profileId = readIdWithProfileName(profile.getAccountName());
 
         try{
-            String sqlQuery = " UPDATE Profile SET Profilename = '" + profile.getAccountName() + "', Age = " + profile.getAge() +" WHERE Profilename = "+ profileId ;
+            String sqlQuery = " UPDATE Profile SET Profilename = '" + profile.getAccountName() + "', Age = " + profile.getAge() +" WHERE ProfileId = "+ profileId ;
             return dbConnection.sqlHandler.executeSqlNoResult(sqlQuery);
         }
         catch (Exception e){
