@@ -31,6 +31,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTable;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+import javax.swing.JScrollPane;
 
 
 public class Inlogscherm extends JFrame {
@@ -98,6 +99,10 @@ public class Inlogscherm extends JFrame {
 	private JComboBox comboBox_12;
 	private JComboBox comboBox_13;
 	private JComboBox comboBox_14;
+	private JScrollPane scrollPane;
+	private JScrollPane scrollPane_4;
+	private JScrollPane scrollPane_5;
+	private JScrollPane scrollPane_6;
 
 	public Inlogscherm() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -425,9 +430,7 @@ public class Inlogscherm extends JFrame {
 		
 		table_1 = new JTable();
 		table_1.setEnabled(true);
-		table_1.setBounds(12, 42, 475, 322);
-		
-		layeredPane_2.add(table_1);
+		table_1.setBounds(12, 55, 475, 309);
 		
 		JComboBox comboBox_11 = new JComboBox();
 		comboBox_11.setModel(new DefaultComboBoxModel(new String[] {"SELECT", "Account", "Profiel", "Programma"}));
@@ -453,16 +456,15 @@ public class Inlogscherm extends JFrame {
 		});
 		layeredPane_3.add(comboBox_12);
 		
+		JScrollPane scrollPane_1 = new JScrollPane();
+		scrollPane_1.setBounds(12, 39, 475, 325);
+		layeredPane_3.add(scrollPane_1);
+		
 		table_2 = new JTable();
-		table_2.setBounds(12, 48, 475, 316);
-		layeredPane_3.add(table_2);
+		scrollPane_1.setRowHeaderView(table_2);
 		
 		JLayeredPane layeredPane_4 = new JLayeredPane();
 		tabbedPane.addTab("Overzicht2", null, layeredPane_4, null);
-		
-		table_3 = new JTable();
-		table_3.setBounds(12, 120, 475, 244);
-		layeredPane_4.add(table_3);
 		
 		JLabel lblAccount = new JLabel("Account:");
 		lblAccount.setBounds(12, 13, 56, 16);
@@ -486,8 +488,15 @@ public class Inlogscherm extends JFrame {
 		
 		JButton btnShow = new JButton("Show");
 		btnShow.setBounds(70, 87, 88, 25);
-		btnShow.addActionListener(new OverzichtActionListener(comboBox_13,comboBox_14,table_3));
 		layeredPane_4.add(btnShow);
+		
+		JScrollPane scrollPane_2 = new JScrollPane();
+		scrollPane_2.setBounds(12, 120, 475, 244);
+		layeredPane_4.add(scrollPane_2);
+		
+		table_3 = new JTable();
+		scrollPane_2.setViewportView(table_3);
+		btnShow.addActionListener(new OverzichtActionListener(comboBox_13,comboBox_14,table_3));
 		
 		JLayeredPane layeredPane_5 = new JLayeredPane();
 		tabbedPane.addTab("Overzicht3", null, layeredPane_5, null);
@@ -511,16 +520,22 @@ public class Inlogscherm extends JFrame {
 		lblAccount_1.setBounds(12, 16, 56, 16);
 		layeredPane_5.add(lblAccount_1);
 		
+		JScrollPane scrollPane_3 = new JScrollPane();
+		scrollPane_3.setBounds(12, 48, 475, 316);
+		layeredPane_5.add(scrollPane_3);
+		
 		table_4 = new JTable();
-		table_4.setBounds(12, 48, 475, 316);
-		layeredPane_5.add(table_4);
+		scrollPane_3.setViewportView(table_4);
 		
 		JLayeredPane layeredPane_6 = new JLayeredPane();
 		tabbedPane.addTab("Overzicht4", null, layeredPane_6, null);
 		
+		scrollPane_4 = new JScrollPane();
+		scrollPane_4.setBounds(12, 13, 475, 351);
+		layeredPane_6.add(scrollPane_4);
+		
 		table_5 = new JTable();
-		table_5.setBounds(12, 13, 475, 351);
-		layeredPane_6.add(table_5);
+		scrollPane_4.setRowHeaderView(table_5);
 		
 		comboBox.addActionListener(new LoaditemsListener(this, comboBox));
 
@@ -540,21 +555,25 @@ public class Inlogscherm extends JFrame {
 		JLabel lbleerstEenItem = new JLabel("*eerst een item selecteren hieronder");
 		lbleerstEenItem.setBounds(161, 16, 222, 16);
 		layeredPane_2.add(lbleerstEenItem);
+		
+		scrollPane = new JScrollPane();
+		scrollPane.setBounds(12, 55, 475, 309);
+		scrollPane.setViewportView(table_1);
+		layeredPane_2.add(scrollPane);
 		layeredPane.add(comboBox_22);
 		
 		JLayeredPane layeredPane_7 = new JLayeredPane();
 		tabbedPane.addTab("Overzicht5", null, layeredPane_7, null);
-
-		table_6 = new JTable();
-		table_6.setBounds(12, 13, 475, 351);
-		layeredPane_7.add(table_6);
+		
+		scrollPane_5 = new JScrollPane();
+		scrollPane_5.setBounds(12, 13, 475, 351);
+		layeredPane_7.add(scrollPane_5);
+		
+				table_6 = new JTable();
+				scrollPane_5.setRowHeaderView(table_6);
 
 		JLayeredPane layeredPane_8 = new JLayeredPane();
 		tabbedPane.addTab("Overzicht6", null, layeredPane_8, null);
-		
-		table_7 = new JTable();
-		table_7.setBounds(12, 69, 475, 295);
-		layeredPane_8.add(table_7);
 		
 		comboBox_16 = new JComboBox();
 		comboBox_16.setBounds(62, 13, 99, 22);
@@ -575,6 +594,13 @@ public class Inlogscherm extends JFrame {
 		JLabel lblFilm = new JLabel("Film:");
 		lblFilm.setBounds(26, 16, 56, 16);
 		layeredPane_8.add(lblFilm);
+		
+		scrollPane_6 = new JScrollPane();
+		scrollPane_6.setBounds(12, 48, 475, 316);
+		layeredPane_8.add(scrollPane_6);
+		
+		table_7 = new JTable();
+		scrollPane_6.setViewportView(table_7);
 
 	}
 	public void showAcItemAdd()
@@ -601,6 +627,7 @@ public class Inlogscherm extends JFrame {
 		lblVoornaam.setText("Voornaam:");
 		lblToevoeging.setText("Toevoeging:");
 		lblTussenvoegsel.setText("Tussenvoegsel");
+		comboBox_10.setVisible(true);
 	}
 	public void hideAcItemAdd()
 	{
@@ -633,6 +660,7 @@ public class Inlogscherm extends JFrame {
 		lblVoornaam.setVisible(true);
 		lblPassword.setText("Profielnaam:");
 		lblVoornaam.setText("Leeftijd:");
+		comboBox_10.setVisible(true);
 		
 	}
 	public void hidePfItemAdd()
