@@ -32,10 +32,10 @@ public class AccountRepository {
         Account account = null;
         try
         {
-            String sqlQuery = "SELECT * FROM Account WHERE Id=" + id;
+            String sqlQuery = "SELECT * FROM Account WHERE AccountId=" + id;
             ResultSet rs = dbConnection.sqlHandler.executeSql(sqlQuery);
             rs.next();
-            account = new Account(rs.getString("Accountname"), rs.getString("Password"),rs.getString("Firstname"),rs.getString("Insertion"),  rs.getString("Lastname"),rs.getString("Street"),rs.getInt("HouseNumber"),rs.getString("Annax"), rs.getString("Area"), rs.getInt("Active"));
+            account = new Account(rs.getString("Accountname"), rs.getString("Password"),rs.getString("Firstname"),rs.getString("Tussenvoegsel"),  rs.getString("Lastname"),rs.getString("Street"),rs.getInt("HouseNumber"),rs.getString("Annex"), rs.getString("Area"), rs.getInt("Active"));
         }
         catch(Exception e) {
             System.out.println(e);
@@ -102,7 +102,7 @@ public class AccountRepository {
     public boolean delete(Account account) {
         try
         {
-            String sqlQuery = "DELETE Account WHERE Id=" + 1 ;
+            String sqlQuery = "DELETE FROM Account WHERE Accountname = '" + account.getAccountName()+"' AND Street = '"+account.getStreet()+"'";
             return dbConnection.sqlHandler.executeSqlNoResult(sqlQuery);
         }
         catch(Exception e) {

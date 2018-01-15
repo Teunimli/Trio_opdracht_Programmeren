@@ -37,7 +37,7 @@ public class UpdateItemListener implements java.awt.event.ActionListener {
 			inlog.hideAcItemUpdate(); //Combobox_1 moet geladen worden met alle acount namen
 			inlog.hidePgItemUpdate(); //Combobox_2 moet geladen worden met alle profielnamen van een gekozen account
 			inlog.showPfItemUpdate();
-			table.setModel(DbUtils.resultSetToTableModel(db.sqlHandler.executeSql("SELECT * FROM Profiel")));//Combobox_3 moet geladen worden met alle films
+			table.setModel(DbUtils.resultSetToTableModel(db.sqlHandler.executeSql("SELECT * FROM Profile")));//Combobox_3 moet geladen worden met alle films
 								 //Combobox_4 moet geladen worden met alle series
 		}
 		else if (combobox.getSelectedItem().equals("Programma"))
@@ -45,7 +45,7 @@ public class UpdateItemListener implements java.awt.event.ActionListener {
 			inlog.hideAcItemUpdate();
 			inlog.hidePfItemUpdate();
 			inlog.showPgItemUpdate();
-			table.setModel(DbUtils.resultSetToTableModel(db.sqlHandler.executeSql("SELECT * FROM Programma")));
+			table.setModel(DbUtils.resultSetToTableModel(db.sqlHandler.executeSql("SELECT * FROM Program")));
 		}
 		
 	}
