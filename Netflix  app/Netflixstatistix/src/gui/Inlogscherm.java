@@ -71,6 +71,12 @@ public class Inlogscherm extends JFrame {
 	private JLabel label_7;
 	private JLabel label_8;
 	private JTable table_1;
+	private JTable table_2;
+	private JTable table_3;
+	private JTable table_4;
+	private JTable table_5;
+	private JTable table_6;
+	private JTable table_7;
 
 	public Inlogscherm() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -338,14 +344,58 @@ public class Inlogscherm extends JFrame {
 		JLayeredPane layeredPane_3 = new JLayeredPane();
 		tabbedPane.addTab("Overzicht1", null, layeredPane_3, null);
 		
+		JComboBox comboBox_12 = new JComboBox();
+		comboBox_12.setBounds(12, 13, 89, 22);
+		layeredPane_3.add(comboBox_12);
+		
+		table_2 = new JTable();
+		table_2.setBounds(12, 48, 475, 316);
+		layeredPane_3.add(table_2);
+		
 		JLayeredPane layeredPane_4 = new JLayeredPane();
 		tabbedPane.addTab("Overzicht2", null, layeredPane_4, null);
 		
+		table_3 = new JTable();
+		table_3.setBounds(12, 80, 475, 284);
+		layeredPane_4.add(table_3);
+		
+		JLabel lblAccount = new JLabel("Account:");
+		lblAccount.setBounds(12, 13, 56, 16);
+		layeredPane_4.add(lblAccount);
+		
+		JComboBox comboBox_13 = new JComboBox();
+		comboBox_13.setBounds(70, 13, 88, 22);
+		layeredPane_4.add(comboBox_13);
+		
+		JLabel lblSerie = new JLabel("Serie:");
+		lblSerie.setBounds(25, 55, 43, 16);
+		layeredPane_4.add(lblSerie);
+		
+		JComboBox comboBox_14 = new JComboBox();
+		comboBox_14.setBounds(70, 52, 88, 22);
+		layeredPane_4.add(comboBox_14);
+		
 		JLayeredPane layeredPane_5 = new JLayeredPane();
-		tabbedPane.addTab("New tab", null, layeredPane_5, null);
+		tabbedPane.addTab("Overzicht3", null, layeredPane_5, null);
+		
+		JComboBox comboBox_15 = new JComboBox();
+		comboBox_15.setBounds(63, 13, 80, 22);
+		layeredPane_5.add(comboBox_15);
+		
+		JLabel lblAccount_1 = new JLabel("Account:");
+		lblAccount_1.setBounds(12, 16, 56, 16);
+		layeredPane_5.add(lblAccount_1);
+		
+		table_4 = new JTable();
+		table_4.setBounds(12, 48, 475, 316);
+		layeredPane_5.add(table_4);
 		
 		JLayeredPane layeredPane_6 = new JLayeredPane();
-		tabbedPane.addTab("New tab", null, layeredPane_6, null);
+		tabbedPane.addTab("Overzicht4", null, layeredPane_6, null);
+		
+		table_5 = new JTable();
+		table_5.setBounds(12, 13, 475, 351);
+		layeredPane_6.add(table_5);
 		
 		comboBox.addActionListener(new LoaditemsListener(this, comboBox));
 		AddActionListener addActionListener = new AddActionListener(textField, textField_1, textField_2, textField_3, textField_4, textField_5, textField_6, textField_7, textField_8, passwordField, comboBox, comboBox_1);
@@ -364,6 +414,28 @@ public class Inlogscherm extends JFrame {
 		lbleerstEenItem.setBounds(161, 16, 222, 16);
 		layeredPane_2.add(lbleerstEenItem);
 		layeredPane.add(comboBox_10);
+		
+		JLayeredPane layeredPane_7 = new JLayeredPane();
+		tabbedPane.addTab("Overzicht5", null, layeredPane_7, null);
+		
+		table_6 = new JTable();
+		table_6.setBounds(12, 13, 475, 351);
+		layeredPane_7.add(table_6);
+		
+		JLayeredPane layeredPane_8 = new JLayeredPane();
+		tabbedPane.addTab("Overzicht6", null, layeredPane_8, null);
+		
+		table_7 = new JTable();
+		table_7.setBounds(12, 69, 475, 295);
+		layeredPane_8.add(table_7);
+		
+		JComboBox comboBox_16 = new JComboBox();
+		comboBox_16.setBounds(62, 13, 99, 22);
+		layeredPane_8.add(comboBox_16);
+		
+		JLabel lblFilm = new JLabel("Film:");
+		lblFilm.setBounds(26, 16, 56, 16);
+		layeredPane_8.add(lblFilm);
 		btnOpslaan.addActionListener(addActionListener);
 	}
 	public void showAcItemAdd()
