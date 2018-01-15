@@ -18,7 +18,7 @@ public class MovieRepository {
         try {
             ResultSet rs = dbConnection.sqlHandler.executeSql("SELECT * FROM Movie");
             while(rs.next()) {
-                list.add(new Movie(rs.getString("Title"), rs.getInt("Duration"), rs.getString("Gerne"), rs.getString("Language"), rs.getInt("Age")));
+                list.add(new Movie(rs.getString("Title"), rs.getInt("Duration"), rs.getString("Genre"), rs.getString("Language"), rs.getInt("Age")));
             }
         }
         catch(Exception e) {

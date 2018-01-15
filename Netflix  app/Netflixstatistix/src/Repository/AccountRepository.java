@@ -78,7 +78,7 @@ public class AccountRepository {
     public boolean create(Account account){
         try
         {
-            String sqlQuery = "INSERT INTO Account (Accountname, Password, Firstname, Insertion, Lastname, Street, Housenumber, Annax, Area, Active) VALUES('" + account.getAccountName()  + "', '" + account.getPassWord()  + "' ,'" + account.getFirstName() + "', '" + account.getInsertion() + "' ,'" + account.getLastName()+ "','" + account.getStreet()+"','" + account.getHouseNumber()+"','" + account.getAnnex()+"','" + account.getArea()+"'," + account.isActive()+")";
+            String sqlQuery = "INSERT INTO Account (Accountname, Password, Firstname, Insertion, Lastname, Street, Housenumber, Annex, Area, Active) VALUES('" + account.getAccountName()  + "', '" + account.getPassWord()  + "' ,'" + account.getFirstName() + "', '" + account.getInsertion() + "' ,'" + account.getLastName()+ "','" + account.getStreet()+"','" + account.getHouseNumber()+"','" + account.getAnnex()+"','" + account.getArea()+"'," + account.isActive()+")";
             return dbConnection.sqlHandler.executeSqlNoResult(sqlQuery);
         }
         catch(Exception e) {
