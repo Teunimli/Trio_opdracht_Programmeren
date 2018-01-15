@@ -8,8 +8,7 @@ public class Movie {
     private String language;
     private int age;
 
-    public Movie(int id, String title, int duration, String genre, String language, int age) {
-        this.id = id;
+    public Movie( String title, int duration, String genre, String language, int age) {
         this.title = title;
         this.duration = duration;
         this.genre = genre;

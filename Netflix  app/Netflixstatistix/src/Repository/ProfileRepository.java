@@ -42,5 +42,21 @@ public class ProfileRepository {
         }
         return profileNames;
     }
+
+    public int readIdWithProfiletName (String name){
+        int profileId = 0;
+        try
+        {
+            String sqlQuery = "SELECT ProfileId FROM Profile WHERE Profilename = '" + name + "'";
+            ResultSet rs = dbConnection.sqlHandler.executeSql(sqlQuery);
+            while(rs.next()) {
+                profileId = rs.getInt("profileId");
+            }
+        }
+        catch(Exception e) {
+            System.out.println(e);
+        }
+        return profileId;
+    }
 }
 

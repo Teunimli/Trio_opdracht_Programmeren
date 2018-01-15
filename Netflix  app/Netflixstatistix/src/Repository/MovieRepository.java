@@ -1,5 +1,6 @@
 package Repository;
 
+import Database.dbConnection;
 import Domain.Movie;
 
 import java.sql.ResultSet;
@@ -9,22 +10,37 @@ public class MovieRepository {
 
     private SqlHandler sqlHandler;
 
-    public MovieRepository(SqlHandler sqlHandler) {
-        this.sqlHandler = sqlHandler;
+    public MovieRepository(){
     }
 
     public ArrayList<Movie> readAll(){
         ArrayList<Movie> list = new ArrayList<Movie>();
         try {
-            ResultSet rs = sqlHandler.executeSql("SELECT * FROM Movie");
+            ResultSet rs = dbConnection.sqlHandler.executeSql("SELECT * FROM Movie");
             while(rs.next()) {
-                list.add(new Movie(rs.getInt("Id"),rs.getString("Title"), rs.getInt("Duration"), rs.getString("Genre"), rs.getString("Language"), rs.getInt("Age")));
+                list.add(new Movie(rs.getString("Title"), rs.getInt("Duration"), rs.getString("Gerne"), rs.getString("Language"), rs.getInt("Age")));
             }
         }
         catch(Exception e) {
             System.out.println(e);
         }
         return list;
+    }
+
+    public int readIdWithMovieName (String name){
+        int movieId = 0;
+        try
+        {
+            String sqlQuery = "SELECT MovieId FROM Movie WHERE Title = '" + name + "'";
+            ResultSet rs = dbConnection.sqlHandler.executeSql(sqlQuery);
+            while(rs.next()) {
+                movieId = rs.getInt("MovieId");
+            }
+        }
+        catch(Exception e) {
+            System.out.println(e);
+        }
+        return movieId;
     }
 
     public Movie read(int id){
@@ -34,7 +50,7 @@ public class MovieRepository {
             String sqlQuery = "SELECT * FROM Movie WHERE Id=" + id;
             ResultSet rs = sqlHandler.executeSql(sqlQuery);
             rs.next();
-            movie = new Movie(rs.getInt("Id"),rs.getString("Title"), rs.getInt("Duration"), rs.getString("Genre"), rs.getString("Language"), rs.getInt("Age"));
+            movie = new Movie(rs.getString("Title"), rs.getInt("Duration"), rs.getString("Genre"), rs.getString("Language"), rs.getInt("Age"));
         }
         catch(Exception e) {
             System.out.println(e);
@@ -45,8 +61,8 @@ public class MovieRepository {
     public boolean create(Movie movie){
         try
         {
-            String sqlQuery = "INSERT INTO Movie VALUES (" + movie.getId() + ", '" + movie.getTitle() + "', '" + movie.getDuration() + ", '" + movie.getGenre() + ", '" + movie.getLanguage() + ", '" + movie.getAge() + "')";
-            return sqlHandler.executeSqlNoResult(sqlQuery);
+            String sqlQuery = "INSERT INTO Movie (Title, Duration, Gerne, Language, Age) VALUES ('" + movie.getTitle() + "', " + movie.getDuration() + ", '" + movie.getGenre() + ", '" + movie.getLanguage() + ", " + movie.getAge() + ")";
+            return dbConnection.sqlHandler.executeSqlNoResult(sqlQuery);
         }
         catch(Exception e) {
             System.out.println(e);

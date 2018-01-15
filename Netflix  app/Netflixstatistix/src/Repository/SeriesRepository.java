@@ -1,5 +1,6 @@
 package Repository;
 
+import Database.dbConnection;
 import Domain.Episode;
 import Domain.Series;
 
@@ -9,17 +10,17 @@ import java.util.ArrayList;
 public class SeriesRepository {
     private SqlHandler sqlHandler;
 
-    public SeriesRepository(SqlHandler sqlHandler)
+    public SeriesRepository()
     {
-        this.sqlHandler = sqlHandler;
+
     }
 
     public ArrayList<Series> readAll(){
         ArrayList<Series> list = new ArrayList<Series>();
         try {
-            ResultSet rs = sqlHandler.executeSql("SELECT * FROM Serie");
+            ResultSet rs = dbConnection.sqlHandler.executeSql("SELECT * FROM Serie");
             while(rs.next()) {
-                list.add(new Series(rs.getInt("Id"),rs.getString("Title"),rs.getInt("Duration")));
+                list.add(new Series(rs.getString("Title"),rs.getInt("Duration")));
             }
         }
         catch(Exception e) {
@@ -27,6 +28,24 @@ public class SeriesRepository {
         }
         return list;
     }
+
+    public int readIdWitSerieName (String name){
+        int serieId = 0;
+        try
+        {
+            String sqlQuery = "SELECT SerieId FROM Serie WHERE Title = '" + name + "'";
+            ResultSet rs = dbConnection.sqlHandler.executeSql(sqlQuery);
+            while(rs.next()) {
+                serieId = rs.getInt("SerieId");
+            }
+        }
+        catch(Exception e) {
+            System.out.println(e);
+        }
+        return serieId;
+    }
+
+
     public ArrayList<Episode> Getepisode(Series series) {
         ArrayList<Episode> episodes = new ArrayList<Episode>();
         try {
@@ -48,7 +67,7 @@ public class SeriesRepository {
             String sqlQuery = "SELECT * FROM Series WHERE Id =" + id;
             ResultSet rs = sqlHandler.executeSql(sqlQuery);
             rs.next();
-            series = new Series(rs.getInt("SerieId"),rs.getString("Title"),rs.getInt("Duration"));
+            series = new Series(rs.getString("Title"),rs.getInt("Duration"));
         }
         catch(Exception e) {
             System.out.println(e);

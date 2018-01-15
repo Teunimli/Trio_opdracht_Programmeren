@@ -25,7 +25,7 @@ public class EpisodeInterface implements Runnable {
     }
 
     private void createComponents(Container container) {
-        SeriesRepository series = new SeriesRepository(new SqlHandler());
+        SeriesRepository series = new SeriesRepository();
         JPanel panel = new JPanel();
         panel.setBackground(Color.white);
         panel.setLayout(null);

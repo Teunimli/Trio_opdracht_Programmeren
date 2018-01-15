@@ -9,11 +9,9 @@ public class Series {
     private ArrayList<Episode> episodes;
 
 
-    public Series(int id, String title, int duration) {
-        this.id = id;
+    public Series( String title, int duration) {
         this.title = title;
         this.duration = duration;
-        this.episodes = new ArrayList<Episode>();
     }
 
     public int getId() {

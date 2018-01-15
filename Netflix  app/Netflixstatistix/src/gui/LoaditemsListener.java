@@ -1,8 +1,12 @@
 package gui;
 
 import Domain.Account;
+import Domain.Movie;
+import Domain.Series;
 import Repository.AccountRepository;
+import Repository.MovieRepository;
 import Repository.ProfileRepository;
+import Repository.SeriesRepository;
 
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
@@ -14,9 +18,15 @@ public class LoaditemsListener implements java.awt.event.ActionListener{
 	private JComboBox comboBox;
 	private AccountRepository accountRepository;
 	private ProfileRepository profileRepository;
+	private MovieRepository movieRepository;
+	private SeriesRepository seriesRepository;
 	private ArrayList<Account> accounts;
+	private ArrayList<Movie> movies;
+	private ArrayList<Series> series;
 	private ArrayList<String> accountNames;
 	private ArrayList<String> profileNames;
+	private ArrayList<String> movieNames;
+	private ArrayList<String> serieNames;
 
 	public LoaditemsListener(Inlogscherm inlog, JComboBox comboBox)
 	{
@@ -24,9 +34,15 @@ public class LoaditemsListener implements java.awt.event.ActionListener{
 		this.comboBox = comboBox;
 		accountRepository = new AccountRepository();
 		profileRepository = new ProfileRepository();
+		movieRepository = new MovieRepository();
+		seriesRepository = new SeriesRepository();
 		accounts = new ArrayList<Account>();
+		movies = new ArrayList<Movie>();
+		series = new ArrayList<Series>();
 		accountNames = new ArrayList<String>();
 		profileNames = new ArrayList<String>();
+		movieNames = new ArrayList<String>();
+		serieNames = new ArrayList<String>();
 	}
 
 	@Override
@@ -66,7 +82,27 @@ public class LoaditemsListener implements java.awt.event.ActionListener{
 			}
 			inlog.comboBox_1.setModel(new DefaultComboBoxModel(accountNames.toArray()));
 
+			movies = movieRepository.readAll();
+			movieNames.add(null);
+			for(Movie m : movies){
+				movieNames.add(m.getTitle());
+			}
+
+			inlog.comboBox_2.setModel(new DefaultComboBoxModel(movieNames.toArray()));
+
+
+			series = seriesRepository.readAll();
+			serieNames.add(null);
+			for(Series s : series){
+				serieNames.add(s.getTitle());
+			}
+
+			inlog.comboBox_3.setModel(new DefaultComboBoxModel(serieNames.toArray()));
+
+
 			inlog.comboBox_1.addActionListener(new LoadComboBoxListener(this, inlog.comboBox_1, inlog));
+			inlog.comboBox_3.addActionListener(new LoadEpisodeListener(this, inlog.comboBox_3, inlog));
+
 
 
 		}

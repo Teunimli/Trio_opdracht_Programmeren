@@ -46,6 +46,7 @@ public class Inlogscherm extends JFrame {
 	public JComboBox comboBox_2;
 	public JComboBox comboBox_3;
 	public JComboBox comboBox_4;
+	public JComboBox comboBox_10;
 	private JTable table;
 	private JTextField textField_9;
 	private JTextField textField_10;
@@ -317,8 +318,13 @@ public class Inlogscherm extends JFrame {
 		comboBox_9 = new JComboBox();
 		comboBox_9.setBounds(111, 41, 116, 22);
 		layeredPane_1.add(comboBox_9);
+
+		comboBox_10 = new JComboBox();
+		comboBox_10.setBounds(322, 193, 116, 22);
+		layeredPane.add(comboBox_10);
+
 		table.addMouseListener(new TableClickEvent(table,comboBox_5,textField_9,textField_10,textField_11,textField_12,textField_13,textField_14,textField_15,textField_16,textField_17,passwordField_1,comboBox_6,comboBox_7,comboBox_8,comboBox_9));
-		
+
 		JLayeredPane layeredPane_2 = new JLayeredPane();
 		tabbedPane.addTab("Verwijderen", null, layeredPane_2, null);
 		
@@ -335,12 +341,10 @@ public class Inlogscherm extends JFrame {
 		tabbedPane.addTab("New tab", null, layeredPane_6, null);
 		
 		comboBox.addActionListener(new LoaditemsListener(this, comboBox));
-		AddActionListener addActionListener = new AddActionListener(textField, textField_1, textField_2, textField_3, textField_4, textField_5, textField_6, textField_7, textField_8, passwordField, comboBox, comboBox_1);
-		
-		JComboBox comboBox_10 = new JComboBox();
-		comboBox_10.setBounds(322, 193, 116, 22);
-		layeredPane.add(comboBox_10);
+		AddActionListener addActionListener = new AddActionListener(textField, textField_1, textField_2, textField_3, textField_4, textField_5, textField_6, textField_7, textField_8, passwordField, comboBox, comboBox_1, comboBox_2, comboBox_3, comboBox_4, comboBox_10);
 		btnOpslaan.addActionListener(addActionListener);
+
+
 	}
 	public void showAcItemAdd()
 	{
@@ -406,7 +410,6 @@ public class Inlogscherm extends JFrame {
 		comboBox_1.setVisible(false);
 		textField_1.setVisible(false);
 		textField_2.setVisible(false);
-
 	}
 	public void showPgItemAdd()
 	{
@@ -424,7 +427,7 @@ public class Inlogscherm extends JFrame {
 		lblToevoeging.setText("of Serie:");
 		lblTussenvoegsel.setText("Percentage");
 		textField_3.setVisible(true);
-		
+		comboBox_10.setVisible(true);
 	}
 	public void hidePgItemAdd()
 	{

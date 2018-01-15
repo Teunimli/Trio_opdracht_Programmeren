@@ -1,13 +1,18 @@
 package gui;
 
 import Domain.Account;
+import Domain.Program;
 import Domain.Profile;
 import Repository.AccountRepository;
+import Repository.MovieRepository;
 import Repository.ProfileRepository;
+import Repository.ProgramRepository;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
+
+import static javax.swing.JOptionPane.showMessageDialog;
 
 public class AddActionListener implements java.awt.event.ActionListener {
 
@@ -23,10 +28,15 @@ public class AddActionListener implements java.awt.event.ActionListener {
     private JPasswordField passwordField;
     private JComboBox comboBox;
     private JComboBox comboBox_1;
+    private JComboBox comboBox_2;
+    private JComboBox comboBox_3;
+    private JComboBox comboBox_4;
+    private JComboBox comboBox_10;
     AccountRepository accountRepository;
     ProfileRepository profileRepository;
+    ProgramRepository programRepository;
 
-    public AddActionListener(JTextField textField, JTextField textField_1, JTextField textField_2, JTextField textField_3, JTextField textField_4, JTextField textField_5, JTextField textField_6, JTextField textField_7, JTextField textField_8, JPasswordField passwordField ,JComboBox comboBox, JComboBox comboBox_1) {
+    public AddActionListener(JTextField textField, JTextField textField_1, JTextField textField_2, JTextField textField_3, JTextField textField_4, JTextField textField_5, JTextField textField_6, JTextField textField_7, JTextField textField_8, JPasswordField passwordField ,JComboBox comboBox, JComboBox comboBox_1, JComboBox comboBox_2, JComboBox comboBox_3, JComboBox comboBox_4, JComboBox comboBox_10) {
         this.textField = textField;
         this.textField_1 = textField_1;
         this.textField_2 = textField_2;
@@ -39,8 +49,13 @@ public class AddActionListener implements java.awt.event.ActionListener {
         this.passwordField = passwordField;
         this.comboBox = comboBox;
         this.comboBox_1 = comboBox_1;
+        this.comboBox_2 = comboBox_2;
+        this.comboBox_3 = comboBox_3;
+        this.comboBox_4 = comboBox_4;
+        this.comboBox_10 = comboBox_10;
         accountRepository = new AccountRepository();
         profileRepository = new ProfileRepository();
+        programRepository = new ProgramRepository();
     }
 
     @Override
@@ -58,6 +73,15 @@ public class AddActionListener implements java.awt.event.ActionListener {
 
         }
         else if (comboBox.getSelectedItem().equals("Programma")) {
+            int textfield_3 = Integer.parseInt(textField_3.getText());
+
+            if(comboBox_3.getSelectedItem() == null){
+                programRepository.createMovie(new Program(comboBox_4.getSelectedItem().toString(), comboBox_2.getSelectedItem().toString(), null, textfield_3));
+            }else if(comboBox_2.getSelectedIndex() == -1){
+                programRepository.createSerie(new Program(comboBox_4.getSelectedItem().toString(), comboBox_3.getSelectedItem().toString(), comboBox_10.getSelectedItem().toString(), textfield_3));
+            }else if(comboBox_3.getSelectedItem() != null && comboBox_2.getSelectedItem() != null ){
+                showMessageDialog(null, "Toevoegen kan niet");
+            }
 
         }
 
