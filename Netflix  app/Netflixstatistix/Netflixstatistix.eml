@@ -2,4 +2,10 @@
 <component inheritJdk="true">
 	<exclude-output/>
 	<contentEntry url="file://$MODULE_DIR$"/>
+	<lib name="rs2xml.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/rs2xml.jar!/"/>
+	</lib>
+	<levels>
+		<level name="sqljdbc42" value="project"/>
+	</levels>
 </component>
